@@ -1,0 +1,23 @@
+<footer class="footer">
+  <div class="footer-item">
+    <a 
+      class="footer-link" 
+      routerLink=""
+      *ngFor="let footerLink of footerLinks">{{footerLink}}</a>
+  </div>
+  <div class="footer-item">
+    <a 
+      class="footer-link"
+      [href]="iconData.path"
+      *ngFor="let iconData of iconsData">
+      <img
+        draggable="false"
+        class="footer-icon" 
+        [src]="'../../../assets/icons/' + iconData.name + '.svg'">
+    </a>
+  </div>
+  <div class="footer-item">   
+    Ⓒ 2022 my-network
+  </div>
+</footer>
+

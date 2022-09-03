@@ -1,0 +1,98 @@
+.flex-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh
+}
+
+input:-webkit-autofill { 
+  background-clip: text;
+  -webkit-text-fill-color: #525252;
+}
+
+.header-icon {
+  width: 200px;
+  transition-duration: 0.5s;
+}
+
+.header-icon:hover {
+  filter: drop-shadow(0px 0px 20px #ffd9ce);
+}
+
+.main-page-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.main-page-buttons-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.main-page-input {
+  background-color: #ffffff00;
+  border: none;
+  margin: 20px 0px;
+  font-size: 15px;
+  border-bottom: 1px solid #525252;
+  color: #525252;
+
+}
+
+.main-page-input:focus{
+  outline: none;
+  border-bottom: 1px solid #525252;
+}
+
+.main-page-icon {
+  width: 100px;
+}
+
+.login {
+  object-position: 0 0;
+  clip-path: inset(0 50% 0 0);
+}
+.login:hover {
+  object-position: -50px 0;
+  clip-path: inset(0 50% 0 0);
+}
+
+.registration {
+  object-position: 0 0;
+  clip-path: inset(0 0 0 50%);
+}
+.registration:hover {
+  object-position: 50px 0;
+  clip-path: inset(0 0 0 50%);
+}
+
+.disable-icon {
+  pointer-events: none;
+}
+
+.main-page-input-invalid.ng-invalid {
+  box-shadow: 0px 10px 8px -9px red;
+}
+
+.main-page-input-valid.ng-valid {
+  box-shadow: 0px 10px 10px -5px white;
+}
+
+.error-message-hidden {
+  position: relative;
+  visibility: hidden;
+}
+
+.error-message-visible {
+  position: relative;
+  visibility: visible;
+}
+
+.error-text-message {
+  position: absolute;
+  bottom: 40%;
+  left: 20%;
+}
