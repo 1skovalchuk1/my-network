@@ -6,9 +6,6 @@ import { MainPageComponent } from './main-page.component';
 import { MainPageRoutingModule } from './main-page-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 
-
-
-
 @NgModule({
   declarations: [
     MainPageComponent

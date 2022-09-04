@@ -1,0 +1,99 @@
+.flex-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh
+}
+
+/* *********************************************** */
+.header-icon {
+  width: 200px;
+  transition-duration: 0.5s;
+}
+
+.header-icon:hover {
+  filter: drop-shadow(0px 0px 20px #ffd9ce);
+}
+
+/* ********************************************** */
+input:-webkit-autofill { 
+  background-clip: text;
+  -webkit-text-fill-color: #525252;
+}
+
+.main-page-input, .registration-input {
+  background-color: #ffffff00;
+  border: none;
+  margin: 20px 0px;
+  font-size: 15px;
+  border-bottom: 1px solid #525252;
+  color: #525252;
+}
+
+.main-page-input:focus, .registration-input:focus{
+  outline: none;
+  border-bottom: 1px solid #525252;
+}
+
+.input-invalid.ng-invalid {
+  box-shadow: 0px 10px 8px -9px red;
+}
+
+.input-valid.ng-valid {
+  box-shadow: 0px 10px 10px -5px white;
+}
+
+/* ********************************************** */
+.main-page-form, .registration-page-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ********************************************** */
+.disable-icon {
+  pointer-events: none;
+}
+
+.main-page-icon, .registration-icon {
+  cursor: pointer;
+  width: 100px;
+}
+
+.login, .ok {
+  object-position: 0 0;
+  clip-path: inset(0 50% 0 0);
+}
+
+.login:hover, .ok:hover {
+  object-position: -50px 0;
+  clip-path: inset(0 50% 0 0);
+}
+
+.registration, .cancel {
+  object-position: 0 0;
+  clip-path: inset(0 0 0 50%);
+}
+
+.registration:hover, .cancel:hover {
+  object-position: 50px 0;
+  clip-path: inset(0 0 0 50%);
+}
+
+/* ********************************************** */
+.error-text-message {
+  position: absolute;
+  bottom: 40%;
+  left: 20%;
+}
+
+.error-message-hidden {
+  position: relative;
+  visibility: hidden;
+}
+
+.error-message-visible {
+  position: relative;
+  visibility: visible;
+}

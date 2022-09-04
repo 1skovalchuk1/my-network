@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {MainPageService} from '../../services/main-page/main-page.service'
+import { MainPageService } from './services/main-page.service'
 
 @Component({
   selector: 'app-main-page',

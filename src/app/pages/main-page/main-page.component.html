@@ -2,44 +2,38 @@
   <div class="logo-wrapper">
     <img
       class="header-icon"
-      src="../../../assets/icons/fishes.svg"
+      src="assets/icons/whales.svg"
     />
     <div 
       [ngClass]="mainPageService.isInvalidForm(authForm) ? 'error-message-visible' : ''" 
       class="error-message-hidden">
-      <img src="../../../assets/icons/message.svg"/>
-      <ng-container *ngFor="let item of mainPageService.errorData">
-        <p 
-          *ngIf="mainPageService.getErrorMessage(authForm) == item[0]" 
-          class="error-text-message">{{item[1]}}</p>
-      </ng-container>
+      <img src="assets/icons/message.svg"/>
+        <p class="error-text-message">{{mainPageService.getErrorMessage(authForm)}}</p>
     </div>
   </div>
   <form class="main-page-form" [formGroup]="authForm">
     <input 
-      *ngFor="let item of ['email','password']"
-      [ngClass]="mainPageService.isInvalidForm(authForm) ? 'main-page-input-invalid' : 'main-page-input-valid'"
-      [id]="item"
-      [formControlName]="item"
+      *ngFor="let item of mainPageService.inputDatas"
+      [ngClass]="mainPageService.isInvalidForm(authForm) ? 'input-invalid' : 'input-valid'"
+      [id]="item.id"
+      [formControlName]="item.formControlName"
       spellcheck="false"
       class="main-page-input"
-      [type]="item"
-      [placeholder]="item"
+      [type]="item.type"
+      [placeholder]="item.placeholder"
     />
-    <div class="main-page-buttons-wrapper">
+    <div>
       <button type="submit" [ngClass]="authForm.invalid ? 'disable-icon' : ''">
         <img
           class="main-page-icon login"
-          src="../../../assets/icons/login.svg"
+          src="assets/icons/login.svg"
         />
       </button>
-      <button>
         <img
-          (click)="test()"
+          routerLink="/registration"
           class="main-page-icon registration"
-          src="../../../assets/icons/registration.svg"
+          src="assets/icons/registration.svg"
         />
-      </button>
     </div>
   </form>
   <app-footer></app-footer>
