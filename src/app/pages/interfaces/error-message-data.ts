@@ -4,6 +4,6 @@ interface ValidatorData {
 }
 
 export interface ErrorMessageData {
-  formControlname: string,
-  validators: Array<ValidatorData>
+  formControlName: string,
+  validators: Array<ValidatorData>,
 }

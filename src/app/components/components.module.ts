@@ -4,11 +4,14 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ButtonComponent } from './items/button/button.component';
+
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
+    ButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -16,7 +19,8 @@ import { FooterComponent } from './footer/footer.component';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ButtonComponent,
   ]
 })
 export class ComponentsModule { }

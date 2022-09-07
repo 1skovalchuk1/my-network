@@ -9,23 +9,36 @@ export class PagesService {
 
   constructor() { }
 
-  isInvalidForm(nameForm: FormGroup, values: Array<string>): boolean {
-    const f = (str:string):boolean => {
-      return (nameForm.get(str)?.invalid && 
-        (nameForm.get(str)?.dirty || nameForm.get(str)?.touched)) || false
+  isInvalidForm(form: FormGroup): boolean {
+    if (form.status === 'INVALID' && (form.touched || !form.pristine)) {
+      return true
     }
-    return values.reduce((acc,i) => acc || f(i), false)
+    return false
   }
 
-  getErrorMessage(authForm: FormGroup, errorMessageDatas: Array<ErrorMessageData>): string {
-    const parseData = errorMessageDatas.map((obj) => {
+  getErrorMessage(authForm: FormGroup, 
+                  controlErrorMessagesData: Array<ErrorMessageData>,
+                  formErrorMessagesData: Array<ErrorMessageData> = []): string {
+    const controlsData = controlErrorMessagesData.map((obj) => {
         return obj.validators.map((validator) => {
-        return {
-                  isError: !!authForm.get(obj.formControlname)?.errors?.[validator.type],
-                  message: validator.message,
-               }
-      })});
-    return parseData.flat(2).find((item) => item.isError)?.message || ''
+          return {
+                    isError: authForm.get(obj.formControlName)?.errors?.[validator.type],
+                    message: validator.message,
+                 }
+        })
+    })
+    if (authForm.errors) {
+      const formData = formErrorMessagesData.map((obj) => {
+        return obj.validators.map((validator) => {
+          return {
+                    isError: authForm.errors?.[validator.type],
+                    message: validator.message,
+                  }
+        })
+      })
+      return controlsData.concat(formData).flat().find((item) => item.isError)?.message || ''
+    }
+    return controlsData.flat().find((item) => item.isError)?.message || ''
   }
 
 }

@@ -8,32 +8,31 @@
       [ngClass]="mainPageService.isInvalidForm(authForm) ? 'error-message-visible' : ''" 
       class="error-message-hidden">
       <img src="assets/icons/message.svg"/>
-        <p class="error-text-message">{{mainPageService.getErrorMessage(authForm)}}</p>
+      <p class="error-message">{{mainPageService.getErrorMessage(authForm)}}</p>
     </div>
   </div>
-  <form class="main-page-form" [formGroup]="authForm">
+  <form class="page-form" [formGroup]="authForm">
     <input 
       *ngFor="let item of mainPageService.inputDatas"
       [ngClass]="mainPageService.isInvalidForm(authForm) ? 'input-invalid' : 'input-valid'"
-      [id]="item.id"
+      [attr.id]="item.id ? item.id : null"
       [formControlName]="item.formControlName"
       spellcheck="false"
       class="main-page-input"
-      [type]="item.type"
+      [attr.type]="item.type ? item.type : null"
       [placeholder]="item.placeholder"
     />
-    <div>
-      <button type="submit" [ngClass]="authForm.invalid ? 'disable-icon' : ''">
-        <img
-          class="main-page-icon login"
-          src="assets/icons/login.svg"
-        />
-      </button>
-        <img
-          routerLink="/registration"
-          class="main-page-icon registration"
-          src="assets/icons/registration.svg"
-        />
+    <div class="button-wrapper">
+      <app-button
+        link="/registration"
+        [ngClass]="authForm.invalid ? 'disable-icon' : ''"
+        imgSrc="assets/icons/login.svg"
+        buttonType="submit"
+      ></app-button>
+      <app-button
+        link="/registration"
+        imgSrc="assets/icons/registration.svg"
+      ></app-button>
     </div>
   </form>
   <app-footer></app-footer>

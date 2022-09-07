@@ -7,35 +7,50 @@ import { PagesService } from '../../pages.service';
   providedIn: 'root'
 })
 export class MainPageService {
+  // INPUTS VALUE
+  email    = 'email'
+  password = 'password'
+
+  // VALIDATORS TYPE
+  validatorEmail     = 'email'
+  validatorRequired  = 'required'
+  validatorMinLength = 'minlength'
+
+  // CONTROLS NAME
+  controlEmail    = 'email'
+  controlPassword = 'password'
+
+  // CONTROLS ARRAY
+  controls = [this.controlEmail, this.controlPassword]
 
   inputDatas = [
-    {id: 'email',    type: 'email',    formControlName: 'email',         placeholder: 'email'},
-    {id: 'password', type: 'password', formControlName: 'password',      placeholder: 'password'},
+    {id: this.email,    type: this.email,    formControlName: this.email,    placeholder: this.email},
+    {id: this.password, type: this.password, formControlName: this.password, placeholder: this.password},
   ]
 
-  errorMessageDatas:Array<ErrorMessageData> = [
+  controlErrorMessagesData:Array<ErrorMessageData> = [
     {
-      formControlname: 'email',
+      formControlName: this.controlEmail,
       validators: [
-        { type: 'required', message: 'email is empty' },
-        { type: 'email', message: 'email is invalid' },
+        { type: this.validatorRequired, message: 'email is empty' },
+        { type: this.validatorEmail,    message: 'email is invalid' },
       ]
     },
     {
-      formControlname: 'password',
+      formControlName: this.controlPassword,
       validators: [
-        { type: 'required', message: 'password is empty' },
-        { type: 'minlength', message: 'password is too small' },
+        { type: this.validatorRequired,  message: 'password is empty' },
+        { type: this.validatorMinLength, message: 'password is too small' },
       ]
     },
   ]
 
   constructor(private pagesService: PagesService) { }
 
-  isInvalidForm = (authForm:FormGroup) => this.pagesService.isInvalidForm(authForm, ['email', 'password'])
+  isInvalidForm = (authForm:FormGroup) => this.pagesService.isInvalidForm(authForm)
 
   getErrorMessage = (authForm: FormGroup,): string => {
-    return this.pagesService.getErrorMessage(authForm, this.errorMessageDatas)
+    return this.pagesService.getErrorMessage(authForm, this.controlErrorMessagesData)
   }
 
 }

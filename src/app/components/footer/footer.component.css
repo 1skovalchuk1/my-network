@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
-  color: #525252;
+  color: var(--gray);
   text-align: center;
 }
 
@@ -9,13 +9,13 @@
 }
 
 .footer-link {
-  color: #525252;
+  color: var(--gray);
   text-decoration: none;
   padding: 0px 10px 0px 10px;
 }
 
 .footer-link:hover {
-  color: black;
+  color: var(--footer-hover);
 }
 
 .footer-icon {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegistrationService } from './service/registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -8,18 +9,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistrationComponent implements OnInit {
 
-  inputData = [
-    {id: '',         type: '',         formControlName: 'userName',      placeholder: 'user-name'},
-    {id: 'email',    type: 'email',    formControlName: 'email',         placeholder: 'email'},
-    {id: 'password', type: 'password', formControlName: 'password',      placeholder: 'password'},
-    {id: 'password', type: 'password', formControlName: 'passwordAgain', placeholder: 'password-again'},
-  ]
+  constructor(public registrationService: RegistrationService) { }
 
   registrationForm = new FormGroup({
 
     userName: new FormControl('', [
       Validators.required,
-      Validators.email,
+      Validators.minLength(6),
+      Validators.maxLength(20),
+      Validators.pattern('[a-zA-Z ]*'),
     ]),
     email: new FormControl('', [
       Validators.required,
@@ -29,15 +27,18 @@ export class RegistrationComponent implements OnInit {
       Validators.required,
       Validators.minLength(8),
     ]),
-    passwordAgain: new FormControl('', [
+    confirmPassword: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
     ]),
-  })
 
-  constructor() { }
+  }, {validators: this.registrationService.isPasswordsMatching})
 
   ngOnInit(): void {
+  }
+
+  test() {
+    console.log(this.registrationForm)
   }
 
 }

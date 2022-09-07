@@ -9,46 +9,46 @@
 /* *********************************************** */
 .header-icon {
   width: 200px;
-  transition-duration: 0.5s;
+  transition-duration: 1s;
 }
 
 .header-icon:hover {
-  filter: drop-shadow(0px 0px 20px #ffd9ce);
+  filter: drop-shadow(5px 5px 3px var(--bg-middle));
 }
 
 /* ********************************************** */
-input:-webkit-autofill { 
-  background-clip: text;
-  -webkit-text-fill-color: #525252;
-}
-
 .main-page-input, .registration-input {
-  background-color: #ffffff00;
+  background-color: transparent;
   border: none;
   margin: 20px 0px;
-  font-size: 15px;
-  border-bottom: 1px solid #525252;
-  color: #525252;
+  border-bottom: 1px solid var(--gray);
 }
 
 .main-page-input:focus, .registration-input:focus{
   outline: none;
-  border-bottom: 1px solid #525252;
 }
 
 .input-invalid.ng-invalid {
-  box-shadow: 0px 10px 8px -9px red;
+  box-shadow: 0px 10px 8px -8px var(--input-invalid);
 }
 
 .input-valid.ng-valid {
-  box-shadow: 0px 10px 10px -5px white;
+  box-shadow: 0px 10px 8px -8px var(--input-valid);
 }
 
 /* ********************************************** */
-.main-page-form, .registration-page-form {
+.page-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  min-width: 200px;
+  width: 20vw;
+}
+
+/* ********************************************** */
+.button-wrapper {
+  display:flex;
+  justify-content:space-between;
 }
 
 /* ********************************************** */
@@ -56,34 +56,21 @@ input:-webkit-autofill {
   pointer-events: none;
 }
 
-.main-page-icon, .registration-icon {
+.page-icon {
+  object-position: -25px 0%;
+  clip-path: inset(0 25% 0 25%);
   cursor: pointer;
   width: 100px;
 }
 
-.login, .ok {
-  object-position: 0 0;
-  clip-path: inset(0 50% 0 0);
-}
-
-.login:hover, .ok:hover {
-  object-position: -50px 0;
-  clip-path: inset(0 50% 0 0);
-}
-
-.registration, .cancel {
-  object-position: 0 0;
-  clip-path: inset(0 0 0 50%);
-}
-
-.registration:hover, .cancel:hover {
-  object-position: 50px 0;
-  clip-path: inset(0 0 0 50%);
+.page-icon:hover {
+  object-position: 25px 0;
 }
 
 /* ********************************************** */
-.error-text-message {
+.error-message {
   position: absolute;
+  width: 155px;
   bottom: 40%;
   left: 20%;
 }
@@ -94,6 +81,5 @@ input:-webkit-autofill {
 }
 
 .error-message-visible {
-  position: relative;
   visibility: visible;
 }

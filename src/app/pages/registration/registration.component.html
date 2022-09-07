@@ -4,20 +4,16 @@
       class="header-icon"
       src="assets/icons/whales.svg"
     />
-    <!-- <div 
-      [ngClass]="mainPageService.isInvalidForm(authForm) ? 'error-message-visible' : ''" 
+    <div 
+      [ngClass]="registrationService.isInvalidForm(registrationForm) ? 'error-message-visible' : ''" 
       class="error-message-hidden">
-      <img src="../../../assets/icons/message.svg"/>
-      <ng-container *ngFor="let item of mainPageService.errorData">
-        <p 
-          *ngIf="mainPageService.getErrorMessage(authForm) == item[0]" 
-          class="error-text-message">{{item[1]}}</p>
-      </ng-container>
-    </div> -->
+      <img src="assets/icons/message.svg"/>
+      <p class="error-message">{{registrationService.getErrorMessage(registrationForm)}}</p>
+    </div>
   </div>
-  <form class="registration-page-form" [formGroup]="registrationForm">
-    <input 
-      *ngFor="let item of inputData"
+  <form class="page-form" [formGroup]="registrationForm">
+    <input
+      *ngFor="let item of this.registrationService.inputData"
       [attr.id]="item.id ? item.id : null"
       [formControlName]="item.formControlName"
       spellcheck="false"
@@ -25,21 +21,17 @@
       [attr.type]="item.type ? item.type : null"
       [placeholder]="item.placeholder"
     />
-    <div>
-      <button type="submit">
-        <img
-          routerLink="/"
-          class="registration-icon ok"
-          src="assets/icons/ok.svg"
-        />
-      </button>
-      <button>
-        <img
-          routerLink="/"
-          class="registration-icon cancel"
-          src="assets/icons/cancel.svg"
-        />
-      </button>
+    <div class="button-wrapper">
+      <app-button
+        link="/"
+        [ngClass]="registrationForm.invalid ? 'disable-icon' : ''"
+        buttonType="submit"
+        imgSrc="assets/icons/ok.svg"
+      ></app-button>
+      <app-button
+        (click)="test()"
+        imgSrc="assets/icons/cancel.svg"
+      ></app-button>
     </div>
   </form>
   <app-footer></app-footer>
