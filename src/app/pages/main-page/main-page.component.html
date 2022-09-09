@@ -4,9 +4,13 @@
       class="header-icon"
       src="assets/icons/whales.svg"
     />
-    <div 
-      [ngClass]="mainPageService.isInvalidForm(authForm) ? 'error-message-visible' : ''" 
-      class="error-message-hidden">
+    <div *ngIf="this.queryParam && !mainPageService.isInvalidForm(authForm)"
+      class="block-error-message">
+      <img src="assets/icons/message.svg"/>
+      <p class="error-message">email is not registered</p>
+    </div>
+    <div *ngIf="mainPageService.isInvalidForm(authForm)"
+      class="block-error-message">
       <img src="assets/icons/message.svg"/>
       <p class="error-message">{{mainPageService.getErrorMessage(authForm)}}</p>
     </div>
@@ -24,13 +28,14 @@
     />
     <div class="button-wrapper">
       <app-button
-        link="/registration"
-        [ngClass]="authForm.invalid ? 'disable-icon' : ''"
+        [link]="['user', '5']"
+        (click)="login()"
+        [ngClass]="authForm.invalid ? '' : ''"
         imgSrc="assets/icons/login.svg"
         buttonType="submit"
       ></app-button>
       <app-button
-        link="/registration"
+        [link]="['/registration']"
         imgSrc="assets/icons/registration.svg"
       ></app-button>
     </div>

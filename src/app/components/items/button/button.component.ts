@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   template: `
     <button [attr.type]="buttonType ? buttonType : null">
       <img
-        [routerLink]="link"
+        [routerLink]="link ? link : null"
         [src]="imgSrc"
         class="page-icon"
       />
@@ -15,7 +15,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
 
-  @Input() link?:string;
+  @Input() link?:Array<string>;
   @Input() imgClass?:string;
   @Input() buttonType?:string | null = null;
   @Input() imgSrc?:string;

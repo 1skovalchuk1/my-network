@@ -72,14 +72,10 @@
   position: absolute;
   width: 155px;
   bottom: 40%;
-  left: 20%;
+  left: 18%;
 }
 
-.error-message-hidden {
+.block-error-message {
   position: relative;
-  visibility: hidden;
-}
-
-.error-message-visible {
   visibility: visible;
 }
