@@ -10,13 +10,13 @@ export class PagesService {
   constructor() { }
 
   isInvalidForm(form: FormGroup): boolean {
-    if (form.status === 'INVALID' && (form.touched || !form.pristine)) {
+    if (form.invalid && (form.touched || !form.pristine)) {
       return true
     }
     return false
   }
 
-  getErrorMessage(authForm: FormGroup, 
+  getErrorMessage(authForm: FormGroup,
                   controlErrorMessagesData: Array<ErrorMessageData>,
                   formErrorMessagesData: Array<ErrorMessageData> = []): string {
     const controlsData = controlErrorMessagesData.map((obj) => {

@@ -45,7 +45,7 @@ export class MainPageService {
     },
   ]
 
-  constructor(private pagesService: PagesService) { }
+  constructor(private pagesService: PagesService) {}
 
   isInvalidForm = (authForm:FormGroup) => this.pagesService.isInvalidForm(authForm)
 

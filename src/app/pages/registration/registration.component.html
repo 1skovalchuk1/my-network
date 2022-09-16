@@ -5,13 +5,13 @@
       src="assets/icons/whales.svg"
     />
     <div 
-      [ngClass]="registrationService.isInvalidForm(registrationForm) ? 'error-message-visible' : ''" 
-      class="error-message-hidden">
+      [ngClass]="registrationService.isInvalidForm(registrationForm) ? 'block-error-message-visible' : ''" 
+      class="block-error-message">
       <img src="assets/icons/message.svg"/>
       <p class="error-message">{{registrationService.getErrorMessage(registrationForm)}}</p>
     </div>
   </div>
-  <form class="page-form" [formGroup]="registrationForm">
+  <form class="page-form" [formGroup]="registrationForm" (ngSubmit)="registrate()">
     <input
       *ngFor="let item of this.registrationService.inputData"
       [attr.id]="item.id ? item.id : null"
@@ -23,13 +23,12 @@
     />
     <div class="button-wrapper">
       <app-button
-        [link]="['/']"
-        [ngClass]="registrationForm.invalid ? 'disable-icon' : ''"
+        [ngClass]="registrationForm.invalid ? '' : ''"
         buttonType="submit"
         imgSrc="assets/icons/ok.svg"
       ></app-button>
       <app-button
-        (click)="test()"
+        (click)="cancel()"
         imgSrc="assets/icons/cancel.svg"
       ></app-button>
     </div>

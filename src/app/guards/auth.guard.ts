@@ -1,27 +1,35 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { iif, observable, Observable, of } from "rxjs";
-import { AuthService } from "../services/auth/auth.service";
+import { select, Store } from "@ngrx/store";
+import { Observable, of, switchMap } from "rxjs";
+import { selectUserIsAuth } from "../store/selectors/user.selectors";
+import { IAppState } from "../store/states/app.state";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private auth: AuthService, private router: Router) {}
+  isAuth = false;
 
-  canActivate(route: ActivatedRouteSnapshot, 
+  constructor(
+    private store: Store<IAppState>,
+    private router: Router) {}
+
+  canActivate(route: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): boolean |
                                            UrlTree |
                                            Observable<boolean | UrlTree> |
                                            Promise<boolean | UrlTree> {
-    return this.auth.isAuthenticated().then((isAuth) => {
-      if (isAuth) {
-        return true
-      } else {
-        return this.router.navigate( ['/'], { queryParams: {auth: false} })
-      }
-    })
+    return this.store.pipe(
+      select(selectUserIsAuth),
+      switchMap((user) => {
+        if (user) {
+          return of(true)
+        }
+        this.router.navigate( ['/'], { queryParams: {auth: false} })
+        return of(false)
+      })
+    )
   }
-
 }

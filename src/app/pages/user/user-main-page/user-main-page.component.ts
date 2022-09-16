@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { selectUserData } from 'src/app/store/selectors/user.selectors';
+import { IAppState } from 'src/app/store/states/app.state';
+import * as UserActions from '../../../store/actions/user.actions'
 
 @Component({
   selector: 'app-user-main-page',
@@ -9,13 +12,17 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class UserMainPageComponent implements OnInit {
 
-  constructor(public authService:AuthService) { }
+  user$ = this.store.pipe(select(selectUserData))
+
+  constructor(private store: Store<IAppState>,
+              private router: Router,) { }
 
   ngOnInit(): void {
   }
 
   logout() {
-    this.authService.logout()
+    this.store.dispatch(UserActions.logoutUser())
+    this.router.navigate(['/'])
   }
 
 }

@@ -1,6 +1,7 @@
-<p>user-main-page works!</p>
+<p>{{ (user$ | async)?.id }}</p>
+<p>{{ (user$ | async)?.userName }}</p>
+
 <app-button
-  [link]="['/']"
   (click)="logout()"
   imgSrc="assets/icons/registration.svg"
 ></app-button>

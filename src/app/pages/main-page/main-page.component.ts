@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { USERS } from 'src/app/mock-data/mock-users';
-import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { MainPageService } from './services/main-page.service'
+import * as UserActions from '../../store/actions/user.actions'
+import { selectUserData } from 'src/app/store/selectors/user.selectors';
+import { IAppState } from 'src/app/store/states/app.state';
 
 @Component({
   selector: 'app-main-page',
@@ -13,6 +15,7 @@ import { MainPageService } from './services/main-page.service'
 export class MainPageComponent implements OnInit {
 
   queryParam = ''
+  id: string | null = ''
 
   authForm = new FormGroup({
     email: new FormControl('', [
@@ -26,29 +29,20 @@ export class MainPageComponent implements OnInit {
   })
 
   constructor(public mainPageService: MainPageService,
-              public authService: AuthService,
-              public route: ActivatedRoute) { }
+              private router: Router,
+              private store: Store<IAppState>) { }
 
-  ngOnInit(): void {}
-
-  login() {
-    this.authService.login({
-      email: this.authForm.get('email')?.value || '',
-      password:this.authForm.get('password')?.value || '',
-    })
-    console.log(this.queryParam,1)
-    this.route.queryParams.subscribe((p) => {
-      this.queryParam = p['auth']
-      console.log(this.queryParam,2)
-    })
-    console.log(this.queryParam,3)
+  ngOnInit(): void {
+    this.store.dispatch(UserActions.logoutUser())
   }
 
-  getId() {
-    const email = this.authForm.get('email')?.value;
-    const id = email ? USERS[email]?.id : 's'
-    console.log(id, email)
-    return id
+  login() {
+    const {email, password} = this.authForm.value
+    if (email && password) {
+      this.store.dispatch(UserActions.loginUser({email, password}))
+      this.store.select(selectUserData).subscribe((user) => {if (user) {this.id = user.id}})
+      this.router.navigate(['/user', this.id])
+    }
   }
 
 }
