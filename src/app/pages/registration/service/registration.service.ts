@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
-import { ErrorMessageData } from '../../interfaces/error-message-data';
+import { HintService } from 'src/app/services/hint/hint.service';
 import { PagesService } from '../../pages.service';
+import { USERS } from 'src/app/mock-data/mock-users';
+
+type HintControl = [string, Array<[string, string]>]
+type HintForm = [string, string]
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistrationService {
-
-  // FORM NAME
-  formName = 'registrationForm'
 
   // CONTROLS NAME
   controlUserName        = 'userName'
@@ -24,6 +26,7 @@ export class RegistrationService {
   validatorMinLength         = 'minlength'
   validatorMaxLength         = 'maxlength'
   validatorPasswordsMatching = 'passwordsMatching'
+  validatorEmailCreated      = 'emailCreated'
 
   inputData = [
     {id: '',         type: '',         formControlName: this.controlUserName,        placeholder: 'user-name'},
@@ -32,49 +35,47 @@ export class RegistrationService {
     {id: '',         type: 'password', formControlName: this.controlConfirmPassword, placeholder: 'confirm-password'},
   ]
 
-  controlErrorMessagesData: Array<ErrorMessageData> = [
-    {
-      formControlName: this.controlUserName,
-      validators: [
-        { type: this.validatorRequired,  message: 'name is empty' },
-        { type: this.validatorUserName,  message: 'only latin chars' },
-        { type: this.validatorMinLength, message: 'name is too short' },
-        { type: this.validatorMaxLength, message: 'name is too long' },
+  controlErrorMessagesData: Array<HintControl> = [
+    [
+      this.controlUserName, [
+          [ this.validatorRequired,  'name is empty' ],
+          [ this.validatorUserName,  'only latin chars' ],
+          [ this.validatorMinLength, 'name is too short' ],
+          [ this.validatorMaxLength, 'name is too long' ],
       ]
-    },
-    {
-      formControlName: this.controlEmail,
-      validators: [
-        { type: this.validatorRequired, message: 'email is empty' },
-        { type: this.validatorEmail,    message: 'email is invalid' },
+    ],
+    [
+      this.controlEmail, [
+          [ this.validatorRequired, 'email is empty' ],
+          [ this.validatorEmail,    'email is invalid' ],
       ]
-    },
-    {
-      formControlName: this.controlPassword,
-      validators: [
-        { type: this.validatorRequired,  message: 'password is empty' },
-        { type: this.validatorMinLength, message: 'password is too short' },
+    ],
+    [
+      this.controlPassword, [
+          [ this.validatorRequired,  'password is empty' ],
+          [ this.validatorMinLength, 'password is too short' ],
       ]
-    },
-    {
-      formControlName: this.controlConfirmPassword,
-      validators: [
-        { type: this.validatorRequired, message:  'confirm password is empty' },
-        { type: this.validatorMinLength, message: 'confirm password is too short' },
+    ],
+    [
+      this.controlPassword, [
+          [ this.validatorRequired,  'password is empty' ],
+          [ this.validatorMinLength, 'password is too short' ],
       ]
-    },
+    ],
+    [
+      this.controlConfirmPassword, [
+          [ this.validatorRequired,  'confirm password is empty' ],
+          [ this.validatorMinLength, 'confirm password is too short' ],
+      ]
+    ]
   ]
 
-  formErrorMessagesData:Array<ErrorMessageData> = [
-    {
-      formControlName: this.formName,
-      validators: [
-        { type: this.validatorPasswordsMatching, message:  'passwords do not match' },
-      ]
-    },
+  formErrorMessagesData:Array<HintForm> = [
+    [this.validatorPasswordsMatching, 'passwords do not match' ],
+    [this.validatorEmailCreated,      'email already in use' ]
   ]
 
-  constructor(private pagesService: PagesService) {}
+  constructor(private pagesService: PagesService, public hintServise: HintService) {}
 
   isPasswordsMatching(control: AbstractControl):ValidationErrors | null {
     const password = control.get('password')?.value;
@@ -85,10 +86,20 @@ export class RegistrationService {
     return null;
   }
 
-  isInvalidForm = (authForm:FormGroup) => this.pagesService.isInvalidForm(authForm)
+  isEmailCreated(control: AbstractControl):ValidationErrors | null {
+    const email = control.get('email')?.value
+    if (email && email in USERS) {
+      return {emailCreated: true}
+    }
+    return null
+  }
 
-  getErrorMessage = (authForm: FormGroup,): string => {
-    return this.pagesService.getErrorMessage(authForm, this.controlErrorMessagesData, this.formErrorMessagesData)
+  isInvalidForm(registrationForm:FormGroup) {
+    return this.pagesService.isInvalidForm(registrationForm)
+  }
+
+  getFormHintMessage(registrationForm: FormGroup) {
+    return this.hintServise.getFormHintMessage(registrationForm,this.controlErrorMessagesData,this.formErrorMessagesData)
   }
 
 }

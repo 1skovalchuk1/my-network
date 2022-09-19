@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { ErrorMessageData } from '../../interfaces/error-message-data';
+import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
+import { USERS } from 'src/app/mock-data/mock-users';
+import { HintService } from 'src/app/services/hint/hint.service';
 import { PagesService } from '../../pages.service';
+
+type HintControl = [string, Array<[string, string]>]
+type HintForm = [string, string]
 
 @Injectable({
   providedIn: 'root'
@@ -12,45 +16,56 @@ export class MainPageService {
   password = 'password'
 
   // VALIDATORS TYPE
-  validatorEmail     = 'email'
-  validatorRequired  = 'required'
-  validatorMinLength = 'minlength'
+  validatorEmail                 = 'email'
+  validatorRequired              = 'required'
+  validatorMinLength             = 'minlength'
+  validatorAccountNotRegistered  = 'accountNotRegistered'
 
   // CONTROLS NAME
   controlEmail    = 'email'
   controlPassword = 'password'
-
-  // CONTROLS ARRAY
-  controls = [this.controlEmail, this.controlPassword]
 
   inputDatas = [
     {id: this.email,    type: this.email,    formControlName: this.email,    placeholder: this.email},
     {id: this.password, type: this.password, formControlName: this.password, placeholder: this.password},
   ]
 
-  controlErrorMessagesData:Array<ErrorMessageData> = [
-    {
-      formControlName: this.controlEmail,
-      validators: [
-        { type: this.validatorRequired, message: 'email is empty' },
-        { type: this.validatorEmail,    message: 'email is invalid' },
+  controlErrorMessagesData:Array<HintControl> = [
+    [
+      this.controlEmail, [
+        [ this.validatorRequired, 'email is empty' ],
+        [ this.validatorEmail,    'email is invalid' ],
       ]
-    },
-    {
-      formControlName: this.controlPassword,
-      validators: [
-        { type: this.validatorRequired,  message: 'password is empty' },
-        { type: this.validatorMinLength, message: 'password is too small' },
+    ],
+    [
+      this.controlPassword, [
+        [ this.validatorRequired,  'password is empty' ],
+        [ this.validatorMinLength, 'password is too small' ],
       ]
-    },
+    ],
   ]
 
-  constructor(private pagesService: PagesService) {}
+  formErrorMessagesData:Array<HintForm> = [
+    [this.validatorAccountNotRegistered, 'account is not registered' ],
+  ]
 
-  isInvalidForm = (authForm:FormGroup) => this.pagesService.isInvalidForm(authForm)
+  constructor(private pagesService: PagesService,
+              private hintServise: HintService) {}
 
-  getErrorMessage = (authForm: FormGroup,): string => {
-    return this.pagesService.getErrorMessage(authForm, this.controlErrorMessagesData)
+  isAccountNotRegistered(control: AbstractControl):ValidationErrors | null {
+    const email = control.get('email')?.value
+    if (email && !(email in USERS)) {
+      return {accountNotRegistered: true}
+    }
+    return null
+  }
+  
+  isInvalidForm(authForm: FormGroup){
+    return this.pagesService.isInvalidForm(authForm)
+  }
+
+  getFormHintMessage(authForm: FormGroup) {
+    return this.hintServise.getFormHintMessage(authForm, this.controlErrorMessagesData, this.formErrorMessagesData)
   }
 
 }

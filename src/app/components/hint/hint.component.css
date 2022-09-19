@@ -1,0 +1,15 @@
+.error-message {
+  position: absolute;
+  width: 155px;
+  bottom: 39%;
+  left: 19%;
+}
+
+.block-error-message {
+  position: relative;
+  visibility: hidden;
+}
+
+.block-error-message-visible {
+  visibility: visible;
+}

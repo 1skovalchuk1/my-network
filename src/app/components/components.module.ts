@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ButtonComponent } from './items/button/button.component';
+import { HintComponent } from './hint/hint.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { ButtonComponent } from './items/button/button.component';
     HeaderComponent,
     FooterComponent,
     ButtonComponent,
+    HintComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { ButtonComponent } from './items/button/button.component';
     HeaderComponent,
     FooterComponent,
     ButtonComponent,
+    HintComponent,
   ]
 })
 export class ComponentsModule { }

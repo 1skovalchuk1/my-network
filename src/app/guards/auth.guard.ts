@@ -23,11 +23,11 @@ export class AuthGuard implements CanActivate {
                                            Promise<boolean | UrlTree> {
     return this.store.pipe(
       select(selectUserIsAuth),
-      switchMap((user) => {
-        if (user) {
+      switchMap((isAuth) => {
+        if (isAuth) {
           return of(true)
         }
-        this.router.navigate( ['/'], { queryParams: {auth: false} })
+        this.router.navigate( ['/'] )
         return of(false)
       })
     )

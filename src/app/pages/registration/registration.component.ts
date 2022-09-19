@@ -4,8 +4,11 @@ import { RegistrationService } from './service/registration.service';
 import { IAppState } from 'src/app/store/states/app.state';
 import { Store } from '@ngrx/store';
 import * as UserActions from '../../store/actions/user.actions'
+import * as HintActions from '../../store/actions/hint.actions'
 import { USERS } from 'src/app/mock-data/mock-users';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { selectHintMessage } from 'src/app/store/selectors/hint.selectors';
 
 
 @Component({
@@ -14,6 +17,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+
+  hintMessage$:Observable<string> = of('')
 
   constructor(public registrationService: RegistrationService, 
               private store: Store<IAppState>,
@@ -40,15 +45,17 @@ export class RegistrationComponent implements OnInit {
       Validators.minLength(8),
     ]),
 
-  }, {validators: this.registrationService.isPasswordsMatching})
+  }, {validators: [this.registrationService.isPasswordsMatching,
+                   this.registrationService.isEmailCreated]})
 
   ngOnInit(): void {
     this.store.dispatch(UserActions.logoutUser())
+    this.hintMessage$ = this.store.select(selectHintMessage) 
   }
 
   registrate() {
     const {email,password,userName} = this.registrationForm.value
-    if (email && password && userName) {
+    if (!this.registrationService.isInvalidForm(this.registrationForm) && email && password && userName) {
       const newUser = {
         id: `${Object.keys(USERS).length + 1}`,
         isLogined: false,
@@ -58,13 +65,18 @@ export class RegistrationComponent implements OnInit {
       }
       USERS[email] = newUser
     }
-    this.registrationForm.reset()
     this.router.navigate(['/'])
+    this.store.dispatch(HintActions.clearHint())
   }
 
   cancel() {
-    this.registrationForm.reset()
     this.router.navigate(['/'])
+    this.store.dispatch(HintActions.clearHint())
+  }
+
+  setHintMessage() {
+    const message = this.registrationService.getFormHintMessage(this.registrationForm)
+    this.store.dispatch(HintActions.setHint({message}))
   }
 
 }

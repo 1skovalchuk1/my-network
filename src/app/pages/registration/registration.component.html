@@ -4,16 +4,12 @@
       class="header-icon"
       src="assets/icons/whales.svg"
     />
-    <div 
-      [ngClass]="registrationService.isInvalidForm(registrationForm) ? 'block-error-message-visible' : ''" 
-      class="block-error-message">
-      <img src="assets/icons/message.svg"/>
-      <p class="error-message">{{registrationService.getErrorMessage(registrationForm)}}</p>
-    </div>
+    <app-hint [message]="hintMessage$ | async"></app-hint>
   </div>
   <form class="page-form" [formGroup]="registrationForm" (ngSubmit)="registrate()">
     <input
       *ngFor="let item of this.registrationService.inputData"
+      (input)="setHintMessage()"
       [attr.id]="item.id ? item.id : null"
       [formControlName]="item.formControlName"
       spellcheck="false"
@@ -23,7 +19,7 @@
     />
     <div class="button-wrapper">
       <app-button
-        [ngClass]="registrationForm.invalid ? '' : ''"
+        [ngClass]="registrationForm.invalid ? 'disable-icon' : ''"
         buttonType="submit"
         imgSrc="assets/icons/ok.svg"
       ></app-button>

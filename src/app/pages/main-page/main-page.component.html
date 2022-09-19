@@ -4,26 +4,12 @@
       class="header-icon"
       src="assets/icons/whales.svg"
     />
-    <div *ngIf="!mainPageService.isInvalidForm(authForm)"
-      [ngClass]="this.queryParam ?
-                'block-error-message-visible' :
-                ''"
-      class="block-error-message">
-      <img src="assets/icons/message.svg"/>
-      <p class="error-message">email or password is incorrect</p>
-    </div>
-    <div *ngIf="mainPageService.isInvalidForm(authForm)"
-      [ngClass]="mainPageService.isInvalidForm(authForm) ? 
-                'block-error-message-visible' :
-                ''"
-      class="block-error-message">
-      <img src="assets/icons/message.svg"/>
-      <p class="error-message">{{mainPageService.getErrorMessage(authForm)}}</p>
-    </div>
+    <app-hint [message]="hintMessage$ | async"></app-hint>
   </div>
   <form class="page-form" [formGroup]="authForm" (ngSubmit)="login()">
     <input 
       *ngFor="let item of mainPageService.inputDatas"
+      (input)="setHintMessage()"
       [attr.id]="item.id ? item.id : null"
       [formControlName]="item.formControlName"
       spellcheck="false"
@@ -33,7 +19,7 @@
     />
     <div class="button-wrapper">
       <app-button
-        [ngClass]="authForm.invalid ? '' : ''"
+        [ngClass]="authForm.invalid ? 'disable-icon' : ''"
         imgSrc="assets/icons/login.svg"
         buttonType="submit"
       ></app-button>

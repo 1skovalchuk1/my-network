@@ -68,18 +68,3 @@ input.ng-valid {
 }
 
 /* ********************************************** */
-.error-message {
-  position: absolute;
-  width: 155px;
-  bottom: 40%;
-  left: 18%;
-}
-
-.block-error-message {
-  position: relative;
-  visibility: hidden;
-}
-
-.block-error-message-visible {
-  visibility: visible;
-}

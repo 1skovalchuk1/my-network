@@ -6,6 +6,6 @@ export const userReducers = createReducer(
   initialUserState,
   on(UserActions.loginUserSuccess, (state, {currentUser}) => (
     {...state, currentUser: {...currentUser, isLogined: true}})),
-    
-  on(UserActions.logoutUser, () => ({currentUser: null}))
+
+  on(UserActions.logoutUser, () => ({currentUser: null})),
 )
