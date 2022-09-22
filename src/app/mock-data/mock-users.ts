@@ -6,6 +6,6 @@ export const USERS:{[email:string]: IUser} = {
     isLogined: false,
     userName: 'testUser',
     email: 'testUser@gmail.com',
-    password: '91827364rR'
+    password: '111111111'
   },
 }

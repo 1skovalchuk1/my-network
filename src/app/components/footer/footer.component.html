@@ -1,9 +1,10 @@
 <footer class="footer">
   <div class="footer-item">
     <a 
+      *ngFor="let footerLink of footerLinks"
       class="footer-link" 
       routerLink=""
-      *ngFor="let footerLink of footerLinks">{{footerLink}}</a>
+    >{{footerLink}}</a>
   </div>
   <div class="footer-item">
     <a 
@@ -16,8 +17,8 @@
         [src]="'assets/icons/' + iconData.name + '.svg'">
     </a>
   </div>
-  <div class="footer-item">   
-    Ⓒ 2022 my-network
+  <div class="footer-item">
+    <p>Ⓒ 2022 my-network</p>
   </div>
 </footer>
 

@@ -1,7 +1,54 @@
-<p>{{ (user$ | async)?.id }}</p>
-<p>{{ (user$ | async)?.userName }}</p>
+<div class="flex-user-page">
+  <nav class="user-navigate">
+    <app-links [links]="links"></app-links>
+    <!-- <ul>
+      <li>
+        <app-button 
+          routerLinkActive="user-nav-link-active"
+          [routerLink]="['./settings']"
+          imgSrc="/assets/icons/home.svg"
+          imgClass="user-nav-link" 
+          btnClass="nav-button"></app-button>
+      </li>
+      <li>
+        <app-button
+          routerLinkActive="user-nav-link-active"
+          imgSrc="/assets/icons/fals.svg"
+          imgClass="user-nav-img" 
+          btnClass="nav-button"></app-button>
+      </li>
+      <li>
+        <app-button
+          routerLinkActive="user-nav-link-active"
+          imgSrc="/assets/icons/settings.svg"
+          imgClass="user-nav-img"
+          btnClass="nav-button"></app-button>
+      </li>
+      <li>
+        <app-button
+          routerLinkActive="user-nav-link-active"
+          imgSrc="/assets/icons/logout.svg"
+          imgClass="nav-img-logout"
+          btnClass="nav-button"></app-button>
+      </li>
+    </ul> -->
+  </nav>
+  <router-outlet></router-outlet>
+  <!-- <div class="wrapper-user-content">
+    <div class="flex-user-header">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+    </div>
+    <div class="flex-user-body">
+      <div class="user-conversations-list"></div>
+      <div class="user-conversation"></div>
+    </div>
+    <p>{{ (user$ | async)?.id }}</p>
+    <p>{{ (user$ | async)?.userName }}</p>
+  </div> -->
+</div>
 
-<app-button
-  (click)="logout()"
-  imgSrc="assets/icons/registration.svg"
-></app-button>
+
+
+

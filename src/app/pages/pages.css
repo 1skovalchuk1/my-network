@@ -1,26 +1,8 @@
-.flex-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 100vh
-}
-
-/* *********************************************** */
-.header-icon {
-  width: 200px;
-  transition-duration: 1s;
-}
-
-.header-icon:hover {
-  filter: drop-shadow(5px 5px 3px var(--bg-middle));
-}
-
 /* ********************************************** */
 .main-page-input, .registration-input {
   background-color: transparent;
   border: none;
-  margin: 20px 0px;
+  margin: 16px 0px;
   border-bottom: 1px solid var(--gray);
 }
 
@@ -42,13 +24,13 @@ input.ng-valid {
   flex-direction: column;
   justify-content: space-between;
   min-width: 200px;
-  width: 20vw;
 }
 
 /* ********************************************** */
 .button-wrapper {
   display:flex;
   justify-content:space-between;
+  margin-top: 10px;
 }
 
 /* ********************************************** */

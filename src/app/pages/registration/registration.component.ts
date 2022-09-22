@@ -7,8 +7,7 @@ import * as UserActions from '../../store/actions/user.actions'
 import * as HintActions from '../../store/actions/hint.actions'
 import { USERS } from 'src/app/mock-data/mock-users';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { selectHintMessage } from 'src/app/store/selectors/hint.selectors';
+import { HintService } from 'src/app/components/hint/services/hint.service';
 
 
 @Component({
@@ -18,9 +17,8 @@ import { selectHintMessage } from 'src/app/store/selectors/hint.selectors';
 })
 export class RegistrationComponent implements OnInit {
 
-  hintMessage$:Observable<string> = of('')
-
-  constructor(public registrationService: RegistrationService, 
+  constructor(public registrationService: RegistrationService,
+              private hintService: HintService,
               private store: Store<IAppState>,
               private router: Router,) { }
 
@@ -45,12 +43,11 @@ export class RegistrationComponent implements OnInit {
       Validators.minLength(8),
     ]),
 
-  }, {validators: [this.registrationService.isPasswordsMatching,
-                   this.registrationService.isEmailCreated]})
+  }, {validators: [this.hintService.isPasswordsMatching,
+                   this.hintService.isEmailCreated]})
 
   ngOnInit(): void {
     this.store.dispatch(UserActions.logoutUser())
-    this.hintMessage$ = this.store.select(selectHintMessage) 
   }
 
   registrate() {
@@ -66,16 +63,14 @@ export class RegistrationComponent implements OnInit {
       USERS[email] = newUser
     }
     this.router.navigate(['/'])
-    this.store.dispatch(HintActions.clearHint())
   }
 
   cancel() {
     this.router.navigate(['/'])
-    this.store.dispatch(HintActions.clearHint())
   }
 
   setHintMessage() {
-    const message = this.registrationService.getFormHintMessage(this.registrationForm)
+    const message = this.hintService.getFormHintMessage(this.registrationForm)
     this.store.dispatch(HintActions.setHint({message}))
   }
 

@@ -3,11 +3,11 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-button',
   template: `
-    <button [type]="buttonType">
+    <button [type]="buttonType" [class]="btnClass">
       <img
         [routerLink]="link ? link : null"
         [src]="imgSrc"
-        class="page-icon"
+        [class]="imgClass"
       />
     </button>
   `,
@@ -17,6 +17,7 @@ export class ButtonComponent implements OnInit {
 
   @Input() link?:Array<string>;
   @Input() imgClass?:string;
+  @Input() btnClass?:string;
   @Input() buttonType?:string = 'button';
   @Input() imgSrc?:string;
 

@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { appReducers } from './store/reducers/app.reducers';
 import { UserEffects } from './store/effects/user.effects';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UserEffects } from './store/effects/user.effects';
     StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([UserEffects]),
+    ComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

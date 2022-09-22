@@ -1,8 +1,9 @@
 .error-message {
   position: absolute;
+  text-align: left;
   width: 155px;
-  bottom: 39%;
-  left: 19%;
+  bottom: 40%;
+  left: 34%;
 }
 
 .block-error-message {

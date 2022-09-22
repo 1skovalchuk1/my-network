@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ButtonComponent } from './items/button/button.component';
 import { HintComponent } from './hint/hint.component';
+import { LinksComponent } from './items/link/links.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { HintComponent } from './hint/hint.component';
     FooterComponent,
     ButtonComponent,
     HintComponent,
+    LinksComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { HintComponent } from './hint/hint.component';
     FooterComponent,
     ButtonComponent,
     HintComponent,
+    LinksComponent,
   ]
 })
 export class ComponentsModule { }

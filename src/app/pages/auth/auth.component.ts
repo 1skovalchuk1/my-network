@@ -2,23 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { MainPageService } from './services/main-page.service'
+import { AuthService } from './services/auth.service'
 import * as UserActions from '../../store/actions/user.actions'
 import * as HintActions from '../../store/actions/hint.actions'
 import { selectUserData } from 'src/app/store/selectors/user.selectors';
 import { IAppState } from 'src/app/store/states/app.state';
-import { selectHintMessage } from 'src/app/store/selectors/hint.selectors';
-import { Observable, of } from 'rxjs';
-import { selectQueryParams } from 'src/app/store/selectors/router.selectors';
+import { HintService } from 'src/app/components/hint/services/hint.service';
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css']
 })
-export class MainPageComponent implements OnInit {
+export class AuthComponent implements OnInit {
 
-  hintMessage$:Observable<string> = of('')
   id: string | null = ''
 
   authForm = new FormGroup({
@@ -30,31 +27,30 @@ export class MainPageComponent implements OnInit {
       Validators.required,
       Validators.minLength(8),
     ]),
-  }, {validators: [this.mainPageService.isAccountNotRegistered]})
+  }, {validators: [this.hintService.isAccountNotRegistered]})
 
-  constructor(public mainPageService: MainPageService,
+  constructor(public authService: AuthService,
+              private hintService: HintService,
               private router: Router,
               private store: Store<IAppState>,
               ) {}
 
   ngOnInit(): void {
     this.store.dispatch(UserActions.logoutUser())
-    this.hintMessage$ = this.store.select(selectHintMessage) 
   }
 
   login() {
-    console.log(this.authForm)
     const {email, password} = this.authForm.value
-    if (!this.mainPageService.isInvalidForm(this.authForm) && email && password) {
+    if (!this.authService.isInvalidForm(this.authForm) && email && password) {
       this.store.dispatch(UserActions.loginUser({email, password}))
       this.store.select(selectUserData).subscribe((user) => {if (user) {this.id = user.id}})
-      this.router.navigate(['/user', this.id])
-      this.store.dispatch(HintActions.clearHint())
+      this.router.navigate(['/user'])
     }
   }
 
   setHintMessage() {
-    const message = this.mainPageService.getFormHintMessage(this.authForm)
+    const message = this.hintService.getFormHintMessage(this.authForm)
     this.store.dispatch(HintActions.setHint({message}))
   }
+
 }
