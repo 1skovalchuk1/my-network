@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
+import * as HintActions from 'src/app/store/actions/hint.actions'
+import { Store } from '@ngrx/store';
 import { USERS } from 'src/app/mock-data/mock-users';
+import { IAppState } from 'src/app/store/states/app.state';
 
 export type HintControl = [string, Array<[string, string]>]
 export type HintForm = [string, string]
@@ -10,7 +13,7 @@ export type HintForm = [string, string]
 })
 export class HintService {
 
-  constructor() { }
+  email = 'email'
 
   // CONTROLS NAME
   controlUserName        = 'userName'
@@ -27,7 +30,6 @@ export class HintService {
   validatorAccountNotRegistered = 'accountNotRegistered'
   validatorPasswordsMatching    = 'passwordsMatching'
   validatorEmailCreated         = 'emailCreated'
-
 
   controlErrorMessagesData: Array<HintControl> = [
     [
@@ -51,12 +53,6 @@ export class HintService {
       ]
     ],
     [
-      this.controlPassword, [
-          [ this.validatorRequired,  'password is empty' ],
-          [ this.validatorMinLength, 'password is too short' ],
-      ]
-    ],
-    [
       this.controlConfirmPassword, [
           [ this.validatorRequired,  'confirm password is empty' ],
           [ this.validatorMinLength, 'confirm password is too short' ],
@@ -69,6 +65,8 @@ export class HintService {
     [this.validatorPasswordsMatching,    'passwords do not match' ],
     [this.validatorEmailCreated,         'email already in use' ],
   ]
+
+  constructor(private store: Store<IAppState>) { }
 
   ///////////////////// VALIDATORS /////////////////////////
 
@@ -96,6 +94,7 @@ export class HintService {
     }
     return null
   }
+  
   ///////////////////////////////////////////////////////////
 
   isInvalidForm(form: FormGroup): boolean {
@@ -120,5 +119,10 @@ export class HintService {
       return message
     }
     return ''
+  }
+
+  setHintMessage(form: FormGroup) {
+    const message = this.getFormHintMessage(form)
+    this.store.dispatch(HintActions.setHint({message}))
   }
 }

@@ -4,6 +4,7 @@
   --bg-middle: #ffd9ce;
   --bg-bottom: #fff59d;
   --gray: #525252;
+  --dark-gray: #222222;
   --input-invalid: #ff5e5e;
   --input-valid: white;
   --footer-hover: black;
@@ -43,13 +44,13 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background:inherit;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: var(--gray);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--dark-gray);
 }

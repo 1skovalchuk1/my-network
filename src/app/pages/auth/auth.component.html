@@ -1,6 +1,6 @@
 <app-form
-  [form]="authForm"
-  (fnSubmit)="login()"
-  (fnInput)="setHintMessage()"
+  [form]="authService.authForm"
+  (fnSubmit)="authService.login()"
+  (fnInput)="hintService.setHintMessage(authService.authForm)"
   [name]="'auth'"
 ></app-form>

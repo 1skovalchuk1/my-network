@@ -1,9 +1,9 @@
-<form class="page-form" [formGroup]="form" (ngSubmit)="_fnInput()" [name]="name">
+<form class="page-form" [formGroup]="form" (ngSubmit)="_fnSubmit()" [name]="name">
   <input
     *ngFor="let item of formService.inputsData[name]"
     spellcheck="false"
     class="main-page-input"
-    (input)="_fnSubmit()"
+    (input)="_fnInput()"
     [placeholder]="item.placeholder"
     [attr.id]="item.id ? item.id : null"
     [formControlName]="item.formControlName"

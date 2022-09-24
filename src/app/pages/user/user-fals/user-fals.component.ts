@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFalsComponent implements OnInit {
 
+  friends = [...Array(5).keys()]
+
   constructor() { }
 
   ngOnInit(): void {

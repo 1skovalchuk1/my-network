@@ -3,7 +3,10 @@
   flex-direction: column;
   justify-content: space-evenly;
   min-height: 100vh;
-  border-right: 1px solid var(--gray)
+  border-right: 1px solid var(--gray);
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 .link-icon {

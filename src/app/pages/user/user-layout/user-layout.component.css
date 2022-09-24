@@ -1,10 +1,12 @@
-.flex-user-page {
+.flex-user-layout {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: center;
   min-height: 100vh
 }
 
-.wrapper-user-content {
-  width: 100%;
+.user-page {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
 }

@@ -19,7 +19,7 @@ export class FormComponent {
     this.fnInput.emit()
   }
   _fnSubmit() {
-    this.fnInput.emit()
+    this.fnSubmit.emit()
   }
 
   constructor(public formService: FormService) { }
