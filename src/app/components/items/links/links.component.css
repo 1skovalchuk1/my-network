@@ -1,0 +1,29 @@
+.user-navigate {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 100vh;
+  border-right: 1px solid var(--gray)
+}
+
+.link-icon {
+  object-position: -25px 0%;
+  clip-path: inset(0 25% 0 25%);
+  cursor: pointer;
+  width: 100px;
+}
+
+.link-icon-active {
+  object-position: 25px 0;
+}
+
+.link-icon-logout {
+  object-position: -25px 0%;
+  clip-path: inset(0 25% 0 25%);
+  cursor: pointer;
+  width: 100px;
+}
+
+.link-icon-logout:hover {
+  object-position: 25px 0;
+}

@@ -1,0 +1,10 @@
+.flex-user-page {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 100vh
+}
+
+.wrapper-user-content {
+  width: 100%;
+}
