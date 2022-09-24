@@ -12,7 +12,6 @@ import { HintService } from 'src/app/components/hint/services/hint.service';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
 
@@ -36,19 +35,20 @@ export class AuthComponent implements OnInit {
               ) {}
 
   ngOnInit(): void {
+    this.store.dispatch(HintActions.clearHint())
     this.store.dispatch(UserActions.logoutUser())
   }
 
-  login() {
+  login():void {
     const {email, password} = this.authForm.value
-    if (!this.authService.isInvalidForm(this.authForm) && email && password) {
+    if (!this.hintService.isInvalidForm(this.authForm) && email && password) {
       this.store.dispatch(UserActions.loginUser({email, password}))
       this.store.select(selectUserData).subscribe((user) => {if (user) {this.id = user.id}})
-      this.router.navigate(['/user'])
+      this.router.navigate(['/user/home'])
     }
   }
 
-  setHintMessage() {
+  setHintMessage():void {
     const message = this.hintService.getFormHintMessage(this.authForm)
     this.store.dispatch(HintActions.setHint({message}))
   }

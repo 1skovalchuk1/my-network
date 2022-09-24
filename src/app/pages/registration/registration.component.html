@@ -1,25 +1,6 @@
-<form class="page-form" [formGroup]="registrationForm" (ngSubmit)="registrate()">
-  <input
-    *ngFor="let item of this.registrationService.inputData"
-    (input)="setHintMessage()"
-    [attr.id]="item.id ? item.id : null"
-    [formControlName]="item.formControlName"
-    spellcheck="false"
-    class="registration-input"
-    [attr.type]="item.type ? item.type : null"
-    [placeholder]="item.placeholder"
-  />
-  <div class="button-wrapper">
-    <app-button
-      [ngClass]="registrationForm.invalid ? 'disable-icon' : ''"
-      buttonType="submit"
-      imgClass="page-icon"
-      imgSrc="assets/icons/ok.svg"
-    ></app-button>
-    <app-button
-      (click)="cancel()"
-      imgClass="page-icon"
-      imgSrc="assets/icons/cancel.svg"
-    ></app-button>
-  </div>
-</form>
+<app-form
+  [form]="registrationForm"
+  (fnSubmit)="registrate()"
+  (fnInput)="setHintMessage()"
+  [name]="'registration'"
+></app-form>

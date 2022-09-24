@@ -1,1 +1,8 @@
-<h1>user-home works!</h1>
+<div class="wrapper-home">
+  <div class="wrapper-userpic">
+    <img src="/assets/icons/user/bull.svg" alt="">
+  </div>
+  <div class="wrapper-user-info">
+    <p>{{(user$ | async)?.userName}}</p>
+  </div>
+</div>

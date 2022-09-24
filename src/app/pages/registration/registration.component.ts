@@ -13,7 +13,6 @@ import { HintService } from 'src/app/components/hint/services/hint.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
 
@@ -47,12 +46,13 @@ export class RegistrationComponent implements OnInit {
                    this.hintService.isEmailCreated]})
 
   ngOnInit(): void {
+    this.store.dispatch(HintActions.clearHint())
     this.store.dispatch(UserActions.logoutUser())
   }
 
   registrate() {
     const {email,password,userName} = this.registrationForm.value
-    if (!this.registrationService.isInvalidForm(this.registrationForm) && email && password && userName) {
+    if (!this.hintService.isInvalidForm(this.registrationForm) && email && password && userName) {
       const newUser = {
         id: `${Object.keys(USERS).length + 1}`,
         isLogined: false,
@@ -62,10 +62,6 @@ export class RegistrationComponent implements OnInit {
       }
       USERS[email] = newUser
     }
-    this.router.navigate(['/'])
-  }
-
-  cancel() {
     this.router.navigate(['/'])
   }
 

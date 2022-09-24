@@ -1,3 +1,9 @@
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
 .page-icon {
   object-position: -25px 0%;
   clip-path: inset(0 25% 0 25%);
@@ -9,8 +15,6 @@
   object-position: 25px 0;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
+.disable-icon {
+  pointer-events: none;
 }

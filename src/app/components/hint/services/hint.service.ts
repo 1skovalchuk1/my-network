@@ -70,6 +70,8 @@ export class HintService {
     [this.validatorEmailCreated,         'email already in use' ],
   ]
 
+  ///////////////////// VALIDATORS /////////////////////////
+
   isAccountNotRegistered(control: AbstractControl):ValidationErrors | null {
     const email = control.get('email')?.value
     if (email && !(email in USERS)) {
@@ -93,6 +95,14 @@ export class HintService {
       return {emailCreated: true}
     }
     return null
+  }
+  ///////////////////////////////////////////////////////////
+
+  isInvalidForm(form: FormGroup): boolean {
+    if (form.invalid && (form.touched || form.dirty)) {
+      return true
+    }
+    return false
   }
 
   getFormHintMessage(form: FormGroup):string {

@@ -1,25 +1,6 @@
-<form class="page-form" [formGroup]="authForm" (ngSubmit)="login()">
-  <input 
-    *ngFor="let item of authService.inputDatas"
-    (input)="setHintMessage()"
-    [attr.id]="item.id ? item.id : null"
-    [formControlName]="item.formControlName"
-    spellcheck="false"
-    class="main-page-input"
-    [attr.type]="item.type ? item.type : null"
-    [placeholder]="item.placeholder"
-  />
-  <div class="button-wrapper">
-    <app-button
-      [ngClass]="authForm.invalid ? 'disable-icon' : ''"
-      imgSrc="assets/icons/login.svg"
-      imgClass="page-icon"
-      buttonType="submit"
-    ></app-button>
-    <app-button
-      [link]="['/registration']"
-      imgClass="page-icon"
-      imgSrc="assets/icons/registration.svg"
-    ></app-button>
-  </div>
-</form>
+<app-form
+  [form]="authForm"
+  (fnSubmit)="login()"
+  (fnInput)="setHintMessage()"
+  [name]="'auth'"
+></app-form>
