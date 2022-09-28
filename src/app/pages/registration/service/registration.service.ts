@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HintService } from 'src/app/components/hint/services/hint.service';
-import { USERS } from 'src/app/mock-data/mock-users';
+import { PALS, USERS } from 'src/app/mock-data/mock-users';
 
 @Injectable({
   providedIn: 'root'
@@ -41,12 +41,22 @@ export class RegistrationService {
     if (!this.hintService.isInvalidForm(this.registrationForm) && email && password && userName) {
       const newUser = {
         id: `${Object.keys(USERS).length + 1}`,
-        isLogined: false,
+        isOnline: false,
+        userPic: 'bull' as const,
         password,
         userName,
         email,
+        pals: []
       }
       USERS[email] = newUser
+
+      const newPal = {
+        id: newUser.id,
+        isOnline: newUser.isOnline,
+        userPic: newUser.userPic,
+        userName,
+      }
+      PALS[newUser.id] = newPal
     }
     this.router.navigate(['/'])
   }

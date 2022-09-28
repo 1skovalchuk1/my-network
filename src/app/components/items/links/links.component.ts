@@ -11,11 +11,14 @@ export interface IAppLinks {
   selector: 'app-links',
   template: `
     <ul class="user-navigate">
-      <li *ngFor="let link of userNavLinks">
-        <a [routerLink]="link.pagelink"
-           [routerLinkActive]="link.linkActiveClass"
-           [routerLinkActiveOptions]={exact:true}>
-          <img [class]="link.imgClass" [src]="link.imgSrc" [routerLinkActive]="link.linkActiveClass">
+      <li *ngFor="let link of userNavLinks"
+           [routerLinkActive]="link.linkActiveClass">
+        <a [routerLink]="link.pagelink">
+          <img
+            [class]="link.imgClass"
+            [src]="link.imgSrc"
+            [routerLinkActive]="link.linkActiveClass"
+            [routerLinkActiveOptions]={exact:true}>
         </a>
       </li>
     </ul>
@@ -36,8 +39,14 @@ export class LinksComponent {
     },
     {
       imgClass: 'link-icon',
-      imgSrc: '/assets/icons/fals.svg',
-      pagelink: 'fals',
+      imgSrc: '/assets/icons/add-pal-success.svg',
+      pagelink: 'add-pal',
+      linkActiveClass: 'link-icon-active',
+    },
+    {
+      imgClass: 'link-icon',
+      imgSrc: '/assets/icons/pals.svg',
+      pagelink: 'pals',
       linkActiveClass: 'link-icon-active',
     },
     {

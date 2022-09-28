@@ -1,0 +1,49 @@
+.wrapper-home {
+  max-width: initial;
+}
+
+.friend {
+  overflow-wrap: break-word;
+  cursor: pointer;
+  margin: 20px 40px;
+  width: 300px;
+  height: 130px;
+  transition-property:box-shadow;
+  transition-duration: 0.2s;
+}
+
+.friend:hover {
+  box-shadow: 0px 0px 40px -5px white;
+}
+
+.search-name-input {
+  display: block;
+  margin: 80px auto 0 auto;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--gray);
+  width: 400px
+}
+
+.search-name-input:focus {
+  outline: none;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p {
+  text-align: center;
+}
+
+.pals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: scroll;
+  height: calc(100vh - 98px);
+  width: calc(100vw - 100px);
+}

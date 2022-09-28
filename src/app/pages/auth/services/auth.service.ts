@@ -43,7 +43,7 @@ export class AuthService {
 
   authenticate({ email, password }: { email: string, password: string}) {
     if (USERS[email] && USERS[email].password == password) {
-      if (USERS[email].isLogined) {
+      if (USERS[email].isOnline) {
         this.store.dispatch(HintActions.setHint({message: 'user already login'}))
         return EMPTY
       }

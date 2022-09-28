@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 :root {
   --bg-top: #b2bcff;
   --bg-middle: #ffd9ce;
@@ -15,20 +14,26 @@
   padding: 0;
   font-family: 'Roboto', sans-serif;
   color: var(--gray);
+  box-sizing: border-box;
+
+  -webkit-user-drag:     none;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 body {
   background-image: linear-gradient(0deg, var(--bg-top) 40%, var(--bg-middle) 80%, var(--bg-bottom) 100%);
-  min-height: 100vh
+  height: 100%;
+  background-attachment: fixed;
 }
 
 input:-webkit-autofill { 
   background-clip: text;
   -webkit-text-fill-color: var(--gray);
-}
-
-img {
-  -webkit-user-drag: none;
 }
 
 p, input, a {
@@ -40,7 +45,7 @@ ul {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {

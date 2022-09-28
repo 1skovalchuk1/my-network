@@ -9,6 +9,6 @@ export const selectUserData = createSelector(
 )
 
 export const selectUserIsAuth = createSelector(
-  selectUser, (userState:IUserState) => userState.currentUser?.isLogined
+  selectUser, (userState:IUserState) => userState.currentUser?.isOnline
 )
 

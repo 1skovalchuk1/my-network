@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserFalsComponent } from './user-fals.component';
+import { UserAddPalComponent } from './user-add-pal.component';
 
-describe('UserFalsComponent', () => {
-  let component: UserFalsComponent;
-  let fixture: ComponentFixture<UserFalsComponent>;
+describe('UserAddPalComponent', () => {
+  let component: UserAddPalComponent;
+  let fixture: ComponentFixture<UserAddPalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserFalsComponent ]
+      declarations: [ UserAddPalComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserFalsComponent);
+    fixture = TestBed.createComponent(UserAddPalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

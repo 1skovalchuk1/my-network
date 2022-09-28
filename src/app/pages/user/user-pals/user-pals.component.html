@@ -1,0 +1,17 @@
+<div class="wrapper-pals">
+  <div class="search-pal">
+    <input class="search-name-input"
+           placeholder="search-pals"
+           [(ngModel)]="searchPal">
+  </div>
+  <div class="pals">
+    <div *ngFor="let pal of (pals | filter: searchPal)"
+          class="friend">
+      <a [routerLink]="['/user/pal', pal.id]">
+        <img [src]="'/assets/icons/user/' + pal.userPic + '.svg'" alt="">
+        <p>{{pal.userName}}</p>
+      </a>
+</div>
+  </div>
+
+</div>

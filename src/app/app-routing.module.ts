@@ -13,11 +13,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/user/user-layout/user-layout.module').then(m => m.UserLayoutModule),
     canActivate: [AuthGuard],
   },
-  {
-    path: '**',
-    redirectTo: '',
-    pathMatch: 'full'
-  }
+  // {
+  //   path: '**',
+  //   redirectTo: '',
+  //   pathMatch: 'full'
+  // }
 
 ];
 
