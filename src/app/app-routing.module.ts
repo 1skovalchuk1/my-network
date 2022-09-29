@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    loadChildren: () => import('./pages/user/user-layout/user-layout.module').then(m => m.UserLayoutModule),
+    loadChildren: () => import('./pages/user/user.module').then(m => m.UserLayoutModule),
     canActivate: [AuthGuard],
   },
   // {

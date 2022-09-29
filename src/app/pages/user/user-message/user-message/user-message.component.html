@@ -1,0 +1,20 @@
+<div class="wrapper-pals">
+  <div class="search-pal">
+    <input class="search-name-input"
+           placeholder="search-pals"
+           [(ngModel)]="searchPal">
+  </div>
+  <div class="pals">
+    <ul>
+      <li *ngFor="let pal of (pals | filter: searchPal)">
+        <a [routerLink]="['/user/message/', pal.id]">
+          <div class="pal">
+            <img [src]="'/assets/icons/user/' + pal.userPic + '.svg'" alt="">
+            <p>{{pal.userName}}:</p>
+            <p>Message {{pal.userName}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi deleniti deserunt velit similique ad vero amet temporibus odit repudiandae aliquid.</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

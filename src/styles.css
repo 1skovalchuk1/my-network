@@ -15,6 +15,7 @@
   font-family: 'Roboto', sans-serif;
   color: var(--gray);
   box-sizing: border-box;
+  text-decoration: none;
 
   -webkit-user-drag:     none;
   -webkit-touch-callout: none;
@@ -49,7 +50,7 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
-  background:inherit;
+  background: inherit;
 }
 
 ::-webkit-scrollbar-thumb {

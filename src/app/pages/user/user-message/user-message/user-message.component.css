@@ -3,12 +3,15 @@
 }
 
 .pal {
-  overflow-wrap: break-word;
+  display: flex;
+  align-items: center;
+  box-shadow: 1px 1px 1px 1px var(--gray);
+  border-radius: 10px;
+
   cursor: pointer;
-  margin: 20px 40px;
-  width: 300px;
-  height: 130px;
-  border-radius: 50px;
+  margin: 15px 20px;
+  width: 400px;
+  height: 50px;
   transition-property:box-shadow;
   transition-duration: 0.2s;
 }
@@ -22,7 +25,7 @@
   margin: 80px auto 0 auto;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid var(--gray);
+  box-shadow: 0px 2px 1px -1px var(--gray);
   width: 400px
 }
 
@@ -31,19 +34,23 @@
 }
 
 img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  width: 50px;
 }
 
 p {
-  text-align: center;
+  display: inline-block;
+  margin-left: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 250px;
 }
 
 .pals {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   overflow-y: scroll;
   height: calc(100vh - 98px);
   width: calc(100vw - 100px);

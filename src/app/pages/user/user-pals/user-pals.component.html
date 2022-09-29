@@ -6,12 +6,11 @@
   </div>
   <div class="pals">
     <div *ngFor="let pal of (pals | filter: searchPal)"
-          class="friend">
-      <a [routerLink]="['/user/pal', pal.id]">
+          class="pal">
+      <a [routerLink]="['/user/pals/pal', pal.id]">
         <img [src]="'/assets/icons/user/' + pal.userPic + '.svg'" alt="">
         <p>{{pal.userName}}</p>
       </a>
-</div>
+    </div>
   </div>
-
 </div>

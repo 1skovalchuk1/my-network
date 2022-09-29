@@ -18,7 +18,7 @@ export interface IAppLinks {
             [class]="link.imgClass"
             [src]="link.imgSrc"
             [routerLinkActive]="link.linkActiveClass"
-            [routerLinkActiveOptions]={exact:true}>
+            [routerLinkActiveOptions]="link.pagelink === 'home' ? {exact:true} : {exact:false}">
         </a>
       </li>
     </ul>
@@ -35,6 +35,12 @@ export class LinksComponent {
       imgClass: 'link-icon',
       imgSrc: '/assets/icons/home.svg',
       pagelink: 'home',
+      linkActiveClass: 'link-icon-active',
+    },
+    {
+      imgClass: 'link-icon',
+      imgSrc: '/assets/icons/send-message.svg',
+      pagelink: 'message',
       linkActiveClass: 'link-icon-active',
     },
     {
