@@ -1,6 +1,14 @@
 <div class="wrapper-chat">
-  <div class="message-dashboard"></div>
-  <div class="block-message">
-    <textarea spellcheck="false" class="message" placeholder="text-message"></textarea>
+  <div class="block-message-dashboard">
+    <div *ngFor="let message of messages">
+      <p
+         [ngClass]="message?.[0] === currentUser.userName ? 'my-message' : 'other-message'"
+        >{{message?.[1]}}</p>
+    </div>
+    <div class="block-fix"></div>
+  </div>
+  <div class="block-new-message">
+    <textarea spellcheck="false" class="new-message" placeholder="new-message"></textarea>
+    <button (click)="test()">11111111</button>
   </div>
 </div>
