@@ -1,6 +1,6 @@
 
 .block-message-dashboard {
-  overflow-y: scroll;
+  overflow-y: overlay;
   width: 700px;
   height: 70vh;
   box-shadow: 1px 1px 1px 1px;
@@ -10,14 +10,20 @@
   flex-direction: column-reverse;
 }
 
+.block-new-message {
+  display: flex;
+  flex-direction: row;
+}
+
 .new-message {
-  width: 700px;
+  width: 640px;
   resize: none;
   margin: 0 0 30px 30px;
   height: 10vh;
   background-color: inherit;
   border-radius: 10px;
   padding: 10px;
+
 }
 
 .new-message:focus {
@@ -25,7 +31,7 @@
 }
 
 .my-message {
-  width: 200px;
+  width: 300px;
   margin: 20px;
   margin-left: auto;
   box-shadow: 1px 1px 1px 1px;
@@ -34,11 +40,15 @@
 }
 
 .other-message {
-  width: 200px;
+  width: 300px;
   box-shadow: 1px 1px 1px 1px;
   margin: 20px;
   border-radius: 5px;
   overflow-wrap: break-word;
+}
+
+p {
+  white-space: pre-line;
 }
 
 ::-webkit-scrollbar {

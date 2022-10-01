@@ -11,6 +11,10 @@ button {
   width: 100px;
 }
 
+.page-icon-hover {
+  object-position: 25px 0;
+}
+
 .page-icon:hover {
   object-position: 25px 0;
 }

@@ -1,14 +1,23 @@
 <div class="wrapper-chat">
-  <div class="block-message-dashboard">
-    <div *ngFor="let message of messages">
-      <p
-         [ngClass]="message?.[0] === currentUser.userName ? 'my-message' : 'other-message'"
-        >{{message?.[1]}}</p>
-    </div>
-    <div class="block-fix"></div>
+  <div class="block-message-dashboard" #chat>
+      <div *ngFor="let message of messages">
+        <p
+          [ngClass]="message.name === currentUser?.userName ? 'my-message' : 'other-message'"
+          >{{message.text}}</p>
+      </div>
   </div>
   <div class="block-new-message">
-    <textarea spellcheck="false" class="new-message" placeholder="new-message"></textarea>
-    <button (click)="test()">11111111</button>
+    <textarea
+      (keydown)="newLineEnter($event)"
+      [(ngModel)]="message"
+      spellcheck="false"
+      class="new-message"
+      placeholder="new-message"></textarea>
+    <app-button
+      buttonType="button"
+      btnClass="button"
+      imgSrc="assets/icons/send-message-new.svg"
+      [imgClass]="isMessageSend ? 'page-icon page-icon-hover' : 'page-icon'"
+      (click)="sendMessage()"></app-button>
   </div>
 </div>

@@ -39,7 +39,7 @@ export class LinksComponent {
     },
     {
       imgClass: 'link-icon',
-      imgSrc: '/assets/icons/send-message.svg',
+      imgSrc: '/assets/icons/chat.svg',
       pagelink: 'message',
       linkActiveClass: 'link-icon-active',
     },
