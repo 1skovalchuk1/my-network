@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from 'src/app/interfaces/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-home',
@@ -7,12 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserHomeComponent implements OnInit {
 
-  currentUser:any = {}
+  currentUser: IUser | null = null
 
-  constructor() {}
+  constructor(
+    private userService: UserService,
+  ) {}
 
   ngOnInit(): void {
-    this.currentUser = (JSON.parse(localStorage.getItem('currentUser') || ''))
+    this.currentUser = this.userService.user
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IPal } from 'src/app/interfaces/user';
-import { PALS } from 'src/app/mock-data/mock-users';
+import { IPal } from 'src/app/interfaces/pals';
+import { PALS } from 'src/app/mock-data/pals-base';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-pals',
@@ -14,10 +15,10 @@ export class UserPalsComponent implements OnInit {
   pals:Array<IPal> = []
 
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '')
+    this.currentUser = this.userService.user
     this.pals = [...this.currentUser.pals].map((id) => PALS[id])
   }
 

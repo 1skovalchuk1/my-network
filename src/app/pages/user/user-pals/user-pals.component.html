@@ -5,7 +5,7 @@
            [(ngModel)]="searchPal">
   </div>
   <div class="pals">
-    <div *ngFor="let pal of (pals | filter: searchPal)"
+    <div *ngFor="let pal of (pals | filter: searchPal: 'userName')"
           class="pal">
       <a [routerLink]="['/user/pals/pal', pal.id]">
         <img [src]="'/assets/icons/user/' + pal.userPic + '.svg'" alt="">

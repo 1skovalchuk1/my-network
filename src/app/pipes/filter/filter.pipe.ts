@@ -1,19 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IPal } from 'src/app/interfaces/user';
+import { IPal } from 'src/app/interfaces/pals';
 
 @Pipe({
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(pals: Array<IPal>, searchPals: string): Array<IPal> {
-    if (pals.length === 0 || !searchPals) {
-      return pals;
+  transform(items: Array<any>, searchItme: string, searchKey: string): Array<any> {
+    if (items.length === 0 || !searchItme) {
+      return items;
     }
-    return pals.filter((pal) => {
-      console.log(pal)
-      return pal.userName.toLocaleLowerCase().startsWith(searchPals.toLocaleLowerCase())
-    })
+    return items.filter((i:any) => i[searchKey].toLowerCase().startsWith(searchItme.toLowerCase()))
   }
 
 }

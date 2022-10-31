@@ -1,11 +1,11 @@
-import { NgIterable } from "@angular/core"
 
 type TList<T> = [T, TList<T>] | null
 
 export class List<T> {
-  private _list:TList<T> = null
+  private _list:TList<T>
 
-  constructor() {
+  constructor(list:TList<T> = null) {
+    this._list = list
   }
 
   add(value:T) {
@@ -21,13 +21,20 @@ export class List<T> {
   }
 
   length():number {
-    const f = (list:TList<T>):number => {
-      if (list) {
-        return 1+f(list[1])
-      }
-      return 0
+    let i = 0
+    if (this._list) {
+      for (let _ of this) {i++}
     }
-    return f(this._list)
+    return i
+  }
+
+  any(argF:(i:T) => boolean) {
+    if (this._list) {
+      for (let m of this) {
+        if (argF(m)) {return true}
+      }
+    }
+    return false
   }
 
   [Symbol.iterator]():ListIterator<T> {

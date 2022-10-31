@@ -4,6 +4,8 @@ button {
   background-color: transparent;
 }
 
+/* ********************************** */
+
 .page-icon {
   object-position: -25px 0%;
   clip-path: inset(0 25% 0 25%);
@@ -21,4 +23,22 @@ button {
 
 .disable-icon {
   pointer-events: none;
+}
+
+/* ********************************** */
+
+.refresh-button {
+  position: relative;
+  bottom: 40px;
+  left: 110px;
+}
+
+
+.refresh-secret-key {
+  width: 25px;
+  transition: transform 1s;
+}
+
+.refresh-secret-key:hover {
+  transform: rotate(360deg);
 }

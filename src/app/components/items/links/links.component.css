@@ -16,7 +16,7 @@
 
 .link-icon-active {
   object-position: 25px 0;
-  box-shadow: 0px 15px 15px -10px white;
+  box-shadow: -10px 0px 20px 0px white;
 }
 
 .link-icon-logout {
@@ -28,4 +28,28 @@
 
 .link-icon-logout:hover {
   object-position: 25px 0;
+}
+
+.new-message {
+  position: relative
+}
+
+.new-message::after {
+  width: 40px;
+  height: 20px;
+  background-image: url('/assets/icons/unread-message.svg');
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 70px;
+  background-repeat: no-repeat;
+  animation-name: message;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes message {
+  0%   {transform: rotate(-15deg);}
+  50% {transform: rotate(30deg);}
+  100% {transform: rotate(-15deg);}
 }

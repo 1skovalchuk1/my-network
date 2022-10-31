@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
 import * as HintActions from 'src/app/store/actions/hint.actions'
 import { Store } from '@ngrx/store';
-import { USERS } from 'src/app/mock-data/mock-users';
+import { USERS } from 'src/app/mock-data/users-base';
 import { IAppState } from 'src/app/store/states/app.state';
 
 export type HintControl = [string, Array<[string, string]>]

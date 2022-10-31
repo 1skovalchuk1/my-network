@@ -1,0 +1,21 @@
+<div class="wrapper-pals">
+  <div class="search-pal">
+    <input class="search-name-input"
+           placeholder="search-pals"
+           [(ngModel)]="searchChat">
+  </div>
+  <div class="pals">
+    <ul>
+      <li *ngFor="let pal of (pals | filter: searchChat: 'userName')">
+        <a [routerLink]="['/user/chats/', getChatId(pal.id)]">
+          <div class="pal">
+            <div class="icons-flex">
+              <img [src]="'/assets/icons/user/' + pal.userPic + '.svg'">
+            </div>
+            <p>{{pal.userName}}</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

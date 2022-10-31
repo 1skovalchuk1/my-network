@@ -1,0 +1,64 @@
+.add-pal-wrapper {
+  margin-top: 50px;
+  width: 270px;
+}
+
+.label {
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.secret-key {
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 10px;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.secret-key-block {
+  padding: 20px 0;
+  position: relative;
+  text-align: center;
+}
+
+.input-secret-key {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--gray);
+  width: 200px;
+  font-size: 35px;
+  text-align: center;
+}
+
+.input-secret-key:focus {
+  outline: none;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.spinner {
+  object-position: 90px 0;
+  clip-path: inset(0 33% 0 33%);
+  width: 270px;
+  animation-name: spinner;
+  animation-duration: 0.3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spinner {
+  0%   {object-position: 90px 0;}
+  0.0001%   {object-position: 0px 0;}
+  25%  {object-position: 0px 0;}
+  25.0001%  {object-position: -90px 0;}
+  50%  {object-position: -90px 0;}
+  50.0001%  {object-position: 0px 0;}
+  75%  {object-position: 0px 0;}
+  75.0001%  {object-position: 90px 0;}
+  100% {object-position: 90px 0;}
+}

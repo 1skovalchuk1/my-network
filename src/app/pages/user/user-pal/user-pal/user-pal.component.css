@@ -39,3 +39,13 @@ p {
   right: 0;
   bottom: 0;
 }
+
+.user-info-title {
+  font-size: 18px;
+  margin: 20px 0px 5px 15px;
+  font-weight: bold;
+}
+
+.user-info-value {
+  margin-left: 25px;
+}

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export interface IAppLinks {
   imgClass: string,
   imgSrc: string,
   pagelink: string | Array<string>,
   linkActiveClass: string,
+  isNewMessage?: boolean
 }
 
 @Component({
@@ -12,7 +13,10 @@ export interface IAppLinks {
   template: `
     <ul class="user-navigate">
       <li *ngFor="let link of userNavLinks"
-           [routerLinkActive]="link.linkActiveClass">
+           [routerLinkActive]="link.linkActiveClass"
+           [class]="isNewMessage && link.pagelink === 'message'
+                    ? 'new-message'
+                    : ''">
         <a [routerLink]="link.pagelink">
           <img
             [class]="link.imgClass"
@@ -28,6 +32,8 @@ export interface IAppLinks {
 
 export class LinksComponent {
 
+  @Input() isNewMessage: boolean = false
+
   constructor() {}
 
   userNavLinks:Array<IAppLinks> = [
@@ -38,9 +44,9 @@ export class LinksComponent {
       linkActiveClass: 'link-icon-active',
     },
     {
-      imgClass: 'link-icon',
+      imgClass: 'link-icon new-message',
       imgSrc: '/assets/icons/chat.svg',
-      pagelink: 'message',
+      pagelink: 'chats',
       linkActiveClass: 'link-icon-active',
     },
     {

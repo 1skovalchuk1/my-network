@@ -1,1 +1,37 @@
-<p>user-add-pal works!</p>
+<div class="add-pal-wrapper">
+  <p class="label" *ngIf="isDataSend">Please wait your pal...</p>
+  <img *ngIf="isDataSend" src="/assets/icons/spinner.svg" class="spinner">
+  <ng-container *ngIf="!isDataSend">
+    <p class="label">secret key lifetime: {{startTime | date:'mm:ss'}}</p>
+    <p *ngIf="timeOver" class="label">Please refresh your secret key</p>
+    <div class="secret-key-block">
+      <p class="label">your secret key:</p>
+      <p class="secret-key">{{uuid}}</p>
+      <app-button
+        (click)="refreshSecretKey()"
+        buttonType="button"
+        btnClass="refresh-button"
+        imgSrc="/assets/icons/reload.svg"
+        imgClass="refresh-secret-key">
+      </app-button>
+    </div>
+    <div class="secret-key-block">
+      <p class="label">pal's secret key:</p>
+      <input class="input-secret-key" spellcheck="false" [(ngModel)]="palSecretKey">
+    </div>
+  </ng-container>
+  <div class="button-wrapper">
+    <app-button
+      (click)="cancel()"
+      buttonType="button"
+      imgSrc="/assets/icons/cancel.svg"
+      imgClass="page-icon">
+    </app-button>
+    <app-button
+      (click)="addPal()"
+      buttonType="button"
+      imgSrc="/assets/icons/ok.svg"
+      imgClass="page-icon">
+    </app-button>
+  </div>
+</div>

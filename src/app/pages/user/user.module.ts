@@ -11,7 +11,7 @@ import { UserPalsComponent } from './user-pals/user-pals.component';
 import { UserAddPalComponent } from './user-add-pal/user-add-pal.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { UserPalComponent } from './user-pal/user-pal/user-pal.component';
-import { UserMessageComponent } from './user-message/user-message/user-message.component';
+import { UserChatsComponent } from './user-chats/user-message/user-chats.component';
 import { UserChatComponent } from './user-chat/user-chat/user-chat.component';
 
 @NgModule({
@@ -22,7 +22,7 @@ import { UserChatComponent } from './user-chat/user-chat/user-chat.component';
     UserPalsComponent,
     UserAddPalComponent,
     UserPalComponent,
-    UserMessageComponent,
+    UserChatsComponent,
     UserChatComponent,
   ],
   imports: [

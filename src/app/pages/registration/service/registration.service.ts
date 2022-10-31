@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { HintService } from 'src/app/components/hint/services/hint.service';
-import { PALS, USERS } from 'src/app/mock-data/mock-users';
+import { UserService } from '../../user/services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +9,7 @@ import { PALS, USERS } from 'src/app/mock-data/mock-users';
 export class RegistrationService {
 
   constructor (private hintService: HintService,
-               private router: Router) {}
+               private userService: UserService) {}
 
   registrationForm = new FormGroup({
 
@@ -37,28 +36,7 @@ export class RegistrationService {
                    this.hintService.isEmailCreated]})
 
   registrate() {
-    const {email,password,userName} = this.registrationForm.value
-    if (!this.hintService.isInvalidForm(this.registrationForm) && email && password && userName) {
-      const newUser = {
-        id: `${Object.keys(USERS).length + 1}`,
-        isOnline: false,
-        userPic: 'bull' as const,
-        password,
-        userName,
-        email,
-        pals: []
-      }
-      USERS[email] = newUser
-
-      const newPal = {
-        id: newUser.id,
-        isOnline: newUser.isOnline,
-        userPic: newUser.userPic,
-        userName,
-      }
-      PALS[newUser.id] = newPal
-    }
-    this.router.navigate(['/'])
+    return this.userService.registrate(this.registrationForm)
   }
 
 }

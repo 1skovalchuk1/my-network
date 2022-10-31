@@ -1,0 +1,78 @@
+.img-userpic {
+  width: 200px;
+}
+
+/* ************************************ */
+.change-info-input, .change-name-input, .change-info-textarea {
+  background-color: transparent;
+  border: none;
+  margin: 16px 0px;
+  border-bottom: 1px solid var(--gray);
+  font-size: 18px;
+  width: 100%;
+}
+
+.change-info-input {
+  font-weight: bold;
+}
+
+/* ************************************ */
+.change-name-input {
+  font-size: 30px;
+  text-align: center;
+}
+
+/* ************************************ */
+.change-info-textarea {
+  border: 1px solid var(--gray);
+  resize: none;
+  font-size: 15px;
+  height: 10vh;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.change-info-textarea:focus,
+.change-name-input:focus,
+.change-info-input:focus {
+  outline: none;
+}
+
+textarea.ng-invalid.ng-touched,
+input.ng-invalid.ng-touched {
+  box-shadow: 0px 10px 8px -8px var(--input-invalid);
+}
+
+/* ************************************ */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: inherit;
+  margin: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-radius: 3px;
+}
+/* ************************************ */
+
+.form-block {
+  margin-top: 30px;
+}
+
+.wrapper-user-info {
+  max-width: 500px;
+}
+
+.button-wrapper,
+.change-userpic-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.change-userpic-block {
+  align-items: center;
+}

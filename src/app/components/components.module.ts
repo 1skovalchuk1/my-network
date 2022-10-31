@@ -9,6 +9,7 @@ import { HintComponent } from './hint/hint.component';
 import { LinksComponent } from './items/links/links.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
+import { MessageComponent } from './message/message/message.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FormComponent } from './form/form.component';
     HintComponent,
     LinksComponent,
     FormComponent,
+    MessageComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +34,7 @@ import { FormComponent } from './form/form.component';
     HintComponent,
     LinksComponent,
     FormComponent,
+    MessageComponent,
   ]
 })
 export class ComponentsModule { }

@@ -1,1 +1,39 @@
-<h1>user-settings works!</h1>
+<div class="wrapper-home">
+  <div class="change-userpic-block">
+    <app-button
+      (click)="previous()"
+      buttonType="button"
+      imgSrc="/assets/icons/previous.svg"
+      imgClass="page-icon">
+    </app-button>
+    <img class="img-userpic" [src]="'/assets/icons/user/' + userPic + '.svg'">
+    <app-button
+      (click)="next()"
+      buttonType="button"
+      imgSrc="/assets/icons/next.svg"
+      imgClass="page-icon">
+    </app-button>
+  </div>
+  <form [formGroup]="userInfoFormGroup" class="wrapper-user-info">
+    <input formControlName="name" class="change-name-input" spellcheck="false"/>
+    <ng-container *ngFor="let form of refForm.controls">
+      <form class="form-block" [formGroup]="form">
+        <input    formControlName="title" class="change-info-input" spellcheck="false"/>
+        <textarea formControlName="value" class="change-info-textarea" spellcheck="false"></textarea>
+      </form>
+    </ng-container>
+  </form>
+  <div class="button-wrapper">
+    <app-button
+      buttonType="button"
+      imgSrc="/assets/icons/cancel.svg"
+      imgClass="page-icon">
+    </app-button>
+    <app-button
+      (click)="submit()"
+      buttonType="button"
+      imgSrc="/assets/icons/ok.svg"
+      imgClass="page-icon">
+    </app-button>
+  </div>
+</div>

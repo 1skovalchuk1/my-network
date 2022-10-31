@@ -1,7 +1,9 @@
-import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { List } from 'src/app/interfaces/list';
-import { IMessage } from 'src/app/interfaces/message';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IMessage } from 'src/app/interfaces/chats';
 import { IUser } from 'src/app/interfaces/user';
+import { CHATS } from 'src/app/mock-data/chats-base';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
@@ -9,49 +11,50 @@ import { IUser } from 'src/app/interfaces/user';
   templateUrl: './user-chat.component.html',
   styleUrls: ['./user-chat.component.css']
 })
-export class UserChatComponent implements OnInit, AfterViewChecked {
+export class UserChatComponent implements OnInit {
 
-  @ViewChild('chat') private chat: ElementRef;
+  currentUser:IUser | null = null
+
+  @ViewChild('chatWindow') chatWindow: ElementRef;
 
   isMessageSend = false
-  currentUser:IUser | null = null
   message:string = ''
-  messages:List<IMessage> = new List()
+  messages:Array<IMessage> = []
 
-  constructor(chat: ElementRef) {
-    this.chat = chat
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute,
+    chatWindow: ElementRef,
+    ) {
+    this.chatWindow = chatWindow
   }
 
-
-  ngAfterViewChecked() {
-    this.scrollToBottom()
-  } 
-
   ngOnInit(): void {
-    this.scrollToBottom();
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '')
+    this.scrollToBottom()
+    this.currentUser = this.userService.user
+    this.messages = CHATS[this.route.snapshot.params['id']].messages
   }
 
   scrollToBottom(): void {
-    try {
-        this.chat.nativeElement.scrollTop = this.chat.nativeElement.scrollHeight;
-    } catch(err) { }                 
+    this.chatWindow.nativeElement.scrollTop = 0
   }
 
   sendMessage() {
     if (this.currentUser && this.message.trim()) {
-      this.messages.add({
-        name:this.currentUser?.userName,
+      this.messages.push({
+        user: this.currentUser,
+        isRead: false,
         text:this.message.trim()})
     }
     this.message = ''
     setTimeout(() => this.isMessageSend = !this.isMessageSend, 300)
     this.isMessageSend = !this.isMessageSend
+    this.scrollToBottom()
   }
 
-  newLineEnter(e:KeyboardEvent) {
+  sendMessageOrNewLine(e:KeyboardEvent) {
     if (e.ctrlKey && e.key === 'Enter') {
-      this.message += '\n';
+      this.message += '\n'
     } else if (e.key === 'Enter') {
       e.preventDefault()
       if (this.message.trim()) {

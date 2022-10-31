@@ -2,10 +2,12 @@
   <img class="img-userpic" [src]="'/assets/icons/user/' + pal.userPic + '.svg'" alt="">
   <div class="wrapper-user-info">
     <p class="user-name">{{pal.userName}}</p>
-    <a [routerLink]="['/user/message/']" class="link-send-message">
+    <a [routerLink]="['/user/chats', id]" class="link-send-message">
       <img [src]="'/assets/icons/send-message.svg'" class="img-send-message">
     </a>
-    <p>tel: +3356-856-03-69</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe libero alias quidem repudiandae? Maxime, blanditiis dolores exercitationem voluptate dolorum sint facilis hic, earum in quaerat voluptates saepe? Sequi, incidunt enim.</p>
+    <ng-container *ngFor="let data of pal.userInfo">
+      <p class="user-info-title">{{data.title}}:</p>
+      <p class="user-info-value">{{data.value}}</p>
+    </ng-container>
   </div>
 </div>

@@ -1,14 +1,15 @@
 <div class="wrapper-chat">
-  <div class="block-message-dashboard" #chat>
-      <div *ngFor="let message of messages">
-        <p
-          [ngClass]="message.name === currentUser?.userName ? 'my-message' : 'other-message'"
-          >{{message.text}}</p>
-      </div>
+  <div #chatWindow class="block-message-dashboard" >
+    <div class="block-message-wrapper">
+      <app-message *ngFor="let message of messages"
+      [isCurrentUser]="message.user.userName === currentUser?.userName"
+      [userPic]="message.user.userPic"
+      [message]="message"></app-message>
+    </div>
   </div>
   <div class="block-new-message">
     <textarea
-      (keydown)="newLineEnter($event)"
+      (keydown)="sendMessageOrNewLine($event)"
       [(ngModel)]="message"
       spellcheck="false"
       class="new-message"

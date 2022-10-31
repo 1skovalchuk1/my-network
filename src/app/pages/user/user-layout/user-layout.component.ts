@@ -11,11 +11,12 @@ import * as UserActions from '../../../store/actions/user.actions'
 })
 export class UserLayoutComponent implements OnInit {
 
-  constructor(private store: Store<IAppState>,
-              private router: Router,) { }
+  isNewMessage:boolean = true
 
-  ngOnInit(): void {
-  }
+  constructor(private store: Store<IAppState>,
+              private router: Router,) {}
+
+  ngOnInit(): void {}
 
   logout() {
     this.store.dispatch(UserActions.logoutUser())

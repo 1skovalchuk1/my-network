@@ -5,8 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class MapPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(items: any, fn: (i:any) => any): any {
+    if (items.length === 0) {
+      return items;
+    }
+    return items.map((i:any) => fn(i))
   }
 
 }
