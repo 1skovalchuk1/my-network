@@ -5,13 +5,12 @@ import { FormGroup } from '@angular/forms';
   selector: 'app-button',
   template: `
     <button [type]="buttonType"
-            [class]="btnClass"
+            [class]="'button ' + btnClass"
             [ngClass]="form?.invalid && buttonType === 'submit' ? 'disable-icon' : ''">
-      <img
+      <app-img
         [routerLink]="link ? link : null"
-        [src]="imgSrc"
-        [class]="imgClass"
-      />
+        [imgNameSrc]="imgNameSrc"
+        [imgClass]="'img-button ' + imgClass"></app-img>
     </button>
   `,
   styleUrls: ['./button.component.css'],
@@ -19,10 +18,10 @@ import { FormGroup } from '@angular/forms';
 export class ButtonComponent implements OnInit {
 
   @Input() link?:Array<string> | string;
-  @Input() imgClass?:string;
+  @Input() imgClass:string = '';
   @Input() btnClass:string = '';
-  @Input() buttonType?:string;
-  @Input() imgSrc?:string;
+  @Input() buttonType:string = '';
+  @Input() imgNameSrc:string = '';
   @Input() form?:FormGroup;
 
 

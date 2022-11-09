@@ -11,6 +11,7 @@ export class AuthService {
   id: string | null = ''
 
   authForm = new FormGroup({
+    
     email: new FormControl('', [
       Validators.required,
       Validators.email,

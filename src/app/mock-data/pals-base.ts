@@ -15,7 +15,6 @@ export const PALS: IPalsBase = {
         title: 'about',
         value: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe libero alias quidem repudiandae? Maxime, blanditiis dolores exercitationem voluptate dolorum sint facilis hic, earum in quaerat voluptates saepe? Sequi, incidunt enim.'
       },
-
     ],
   },
   '2': {

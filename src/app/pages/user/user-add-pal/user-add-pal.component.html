@@ -1,37 +1,35 @@
 <div class="add-pal-wrapper">
-  <p class="label" *ngIf="isDataSend">Please wait your pal...</p>
-  <img *ngIf="isDataSend" src="/assets/icons/spinner.svg" class="spinner">
+  <app-p pClass="user-add-pal--p" *ngIf="isDataSend">Please wait your pal...</app-p>
+  <app-img *ngIf="isDataSend" imgNameSrc="spinner" imgClass="user-add-pal--spinner"></app-img>
   <ng-container *ngIf="!isDataSend">
-    <p class="label">secret key lifetime: {{startTime | date:'mm:ss'}}</p>
-    <p *ngIf="timeOver" class="label">Please refresh your secret key</p>
+    <app-p pClass="user-add-pal--p">secret key lifetime: {{startTime | date:'mm:ss'}}</app-p>
+    <app-p *ngIf="timeOver" pClass="user-add-pal--p">Please refresh your secret key</app-p>
     <div class="secret-key-block">
-      <p class="label">your secret key:</p>
-      <p class="secret-key">{{uuid}}</p>
+      <app-p pClass="user-add-pal--p">your secret key:</app-p>
+      <app-p pClass="user-add-pal--secret-key">{{uuid}}</app-p>
       <app-button
         (click)="refreshSecretKey()"
         buttonType="button"
-        btnClass="refresh-button"
-        imgSrc="/assets/icons/reload.svg"
-        imgClass="refresh-secret-key">
+        btnClass="user-add-pal--refresh"
+        imgNameSrc="reload"
+        imgClass="user-add-pal--refresh">
       </app-button>
     </div>
     <div class="secret-key-block">
-      <p class="label">pal's secret key:</p>
-      <input class="input-secret-key" spellcheck="false" [(ngModel)]="palSecretKey">
+      <app-p pClass="user-add-pal--p">pal's secret key:</app-p>
+      <app-input inputClass="user-add-pal--input-secret-key" [(ngModel)]="palSecretKey" ngDefaultControl></app-input>
     </div>
   </ng-container>
   <div class="button-wrapper">
     <app-button
       (click)="cancel()"
       buttonType="button"
-      imgSrc="/assets/icons/cancel.svg"
-      imgClass="page-icon">
-    </app-button>
+      imgNameSrc="cancel"
+    ></app-button>
     <app-button
       (click)="addPal()"
       buttonType="button"
-      imgSrc="/assets/icons/ok.svg"
-      imgClass="page-icon">
-    </app-button>
+      imgNameSrc="ok"
+    ></app-button>
   </div>
 </div>

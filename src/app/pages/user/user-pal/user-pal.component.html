@@ -1,0 +1,13 @@
+<div class="wrapper-home">
+  <app-img imgClass="user-pal--userpic" [imgNameSrc]="pal.userPic" [isUserPic]="true"></app-img>
+  <div class="wrapper-user-info">
+    <app-p pClass="user-pal--info-name">{{pal.userName}}</app-p>
+    <a [routerLink]="['/user/chats', id]" class="link-send-message">
+      <app-img imgClass="user-pal--send-message" imgNameSrc="send-message"></app-img>
+    </a>
+    <ng-container *ngFor="let data of pal.userInfo">
+      <app-p pClass="user-pal--info-title">{{data.title}}:</app-p>
+      <app-p pClass="user-pal--info-value">{{data.value}}</app-p>
+    </ng-container>
+  </div>
+</div>

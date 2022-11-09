@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IMessage } from 'src/app/interfaces/chats';
-import { UserChatComponent } from 'src/app/pages/user/user-chat/user-chat/user-chat.component';
+import { UserChatComponent } from 'src/app/pages/user/user-chat/user-chat.component';
 import { IPal } from "../../../interfaces/pals";
 
 @Component({
@@ -10,18 +10,10 @@ import { IPal } from "../../../interfaces/pals";
 })
 export class MessageComponent implements OnInit {
 
-  user: IPal = {
-    id: '',
-    isOnline: false,
-    userPic: 'bear',
-    userName: '',
-    userInfo: []
-  }
-
-  @Input() userPic:string = ''
+  @Input() pal:IPal | null = null
   @Input() isCurrentUser:boolean = true
   @Input() message:IMessage = {
-    user: this.user,
+    userId: '',
     isRead: false,
     text: '',
   }

@@ -22,6 +22,7 @@ export class AuthComponent implements OnInit {
     this.store.dispatch(HintActions.clearHint())
     this.store.dispatch(UserActions.logoutUser())
     this.authService.authForm.reset()
+    console.log(this.authService.authForm)
   }
 
 }

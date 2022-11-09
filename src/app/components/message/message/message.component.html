@@ -8,10 +8,10 @@
              }">
   <div
     class="my-message">
-    <p class="message-name">{{message.user.userName}}</p>
+    <p class="message-name">{{pal?.userName}}</p>
     <p class="message-text">{{message.text}}</p>
   </div>
   <img
     class="my-icon"
-    [src]="'assets/icons/user/' + userPic + '.svg'">
+    [src]="'assets/icons/user/' + pal?.userPic + '.svg'">
 </div>

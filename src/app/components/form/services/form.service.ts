@@ -38,12 +38,12 @@ export class FormService {
 
   buttonsData:ButtonData = {
     'auth': [
-      {imgSrc: 'assets/icons/login.svg',        imgClass: 'page-icon', buttonType: 'submit', link: []},
-      {imgSrc: 'assets/icons/registration.svg', imgClass: 'page-icon', buttonType: 'button', link: ['/registration']},
+      {imgSrc: 'login',        imgClass: '', buttonType: 'submit', link: []},
+      {imgSrc: 'registration', imgClass: '', buttonType: 'button', link: ['/registration']},
     ],
     'registration': [
-      {imgSrc: 'assets/icons/ok.svg',     imgClass: 'page-icon', buttonType: 'submit', link: []},
-      {imgSrc: 'assets/icons/cancel.svg', imgClass: 'page-icon', buttonType: 'button', link: ['/']},
+      {imgSrc: 'ok',     imgClass: '', buttonType: 'submit', link: []},
+      {imgSrc: 'cancel', imgClass: '', buttonType: 'button', link: ['/']},
     ]
   }
 

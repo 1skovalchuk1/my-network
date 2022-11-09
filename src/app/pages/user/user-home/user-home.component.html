@@ -1,10 +1,10 @@
 <div class="wrapper-home">
-  <img class="img-userpic" [src]="'/assets/icons/user/' + currentUser?.userPic + '.svg'" alt="">
+  <app-img imgClass="user-home--userpic" [imgNameSrc]="userPic" [isUserPic]="true"></app-img>
   <div class="wrapper-user-info">
-    <p class="user-name">{{currentUser?.userName}}</p>
+    <app-p pClass="user-home--info-name">{{currentUser?.userName}}</app-p>
     <ng-container *ngFor="let data of currentUser?.userInfo">
-      <p class="user-info-title">{{data.title}}:</p>
-      <p class="user-info-value">{{data.value}}</p>
+      <app-p pClass="user-home--info-title">{{data.title}}:</app-p>
+      <app-p pClass="user-home--info-value">{{data.value}}</app-p>
     </ng-container>
   </div>
 </div>

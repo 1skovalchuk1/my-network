@@ -5,9 +5,9 @@ import { UserPalsComponent } from './user-pals/user-pals.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
-import { UserPalComponent } from './user-pal/user-pal/user-pal.component';
+import { UserPalComponent } from './user-pal/user-pal.component';
 import { UserChatsComponent } from './user-chats/user-message/user-chats.component';
-import { UserChatComponent } from './user-chat/user-chat/user-chat.component';
+import { UserChatComponent } from './user-chat/user-chat.component';
 
 const routes: Routes = [{ path: '', component: UserLayoutComponent, children: [
     { path: '', redirectTo: 'home', pathMatch: 'full'},

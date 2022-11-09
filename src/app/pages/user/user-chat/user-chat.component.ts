@@ -1,9 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IMessage } from 'src/app/interfaces/chats';
+import { IPal } from 'src/app/interfaces/pals';
 import { IUser } from 'src/app/interfaces/user';
 import { CHATS } from 'src/app/mock-data/chats-base';
-import { UserService } from '../../services/user.service';
+import { PALS } from 'src/app/mock-data/pals-base';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -20,6 +22,7 @@ export class UserChatComponent implements OnInit {
   isMessageSend = false
   message:string = ''
   messages:Array<IMessage> = []
+  palsData:Array<IPal> = []
 
   constructor(
     private userService: UserService,
@@ -35,6 +38,10 @@ export class UserChatComponent implements OnInit {
     this.messages = CHATS[this.route.snapshot.params['id']].messages
   }
 
+  getUsersData(id:string) {
+    return PALS[id]
+  }
+
   scrollToBottom(): void {
     this.chatWindow.nativeElement.scrollTop = 0
   }
@@ -42,7 +49,7 @@ export class UserChatComponent implements OnInit {
   sendMessage() {
     if (this.currentUser && this.message.trim()) {
       this.messages.push({
-        user: this.currentUser,
+        userId: this.currentUser.id,
         isRead: false,
         text:this.message.trim()})
     }

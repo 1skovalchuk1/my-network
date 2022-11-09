@@ -1,21 +1,20 @@
 <form class="page-form" [formGroup]="form" (ngSubmit)="_fnSubmit()" [name]="name">
-  <input
+  <app-input
     *ngFor="let item of formService.inputsData[name]"
-    spellcheck="false"
-    class="main-page-input"
     (input)="_fnInput()"
-    [placeholder]="item.placeholder"
-    [attr.id]="item.id ? item.id : null"
+    [inputPlaceholder]="item.placeholder"
+    [inputId]="item.id"
     [formControlName]="item.formControlName"
-    [type]="item.type"
-  />
+    [inputType]="item.type"
+    ngDefaultControl
+  ></app-input>
   <div class="button-wrapper">
     <app-button
       *ngFor="let item of formService.buttonsData[name]"
       [form]="form"
       [buttonType]="item.buttonType"
       [imgClass]="item.imgClass"
-      [imgSrc]="item.imgSrc"
+      [imgNameSrc]="item.imgSrc"
       [link]="item.link"
     ></app-button>
   </div>

@@ -6,7 +6,7 @@ import { IUser } from 'src/app/interfaces/user';
 import { PALS } from 'src/app/mock-data/pals-base';
 import { selectRouteParams } from 'src/app/store/selectors/router.selectors';
 import { IAppState } from 'src/app/store/states/app.state';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-pal',

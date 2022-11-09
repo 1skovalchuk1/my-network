@@ -1,0 +1,14 @@
+.wrapper-home {
+  margin-top: 50px;
+}
+
+.wrapper-user-info {
+  max-width: 500px;
+}
+
+.link-send-message {
+  margin-bottom: 50px;
+  position:fixed;
+  right: 0;
+  bottom: 0;
+}

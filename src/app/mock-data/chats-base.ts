@@ -7,57 +7,27 @@ export const CHATS: IChatsBase = {
     palsId: ['1', '2',],
     messages: [
       {
-        user: {
-          id: '1',
-          isOnline: true,
-          userPic: 'bull',
-          userName: 'Tom',
-          userInfo: []
-        },
+        userId: '1',
         isRead: false,
         text: 'Hello from Tom 1',
       },
       {
-        user: {
-          id: '2',
-          isOnline: true,
-          userPic: 'horse',
-          userName: 'Lucas',
-          userInfo: []
-        },
+        userId: '2',
         isRead: false,
         text: 'Hello from Lucas 2',
       },
       {
-        user: {
-          id: '2',
-          isOnline: true,
-          userPic: 'horse',
-          userName: 'Lucas',
-          userInfo: []
-        },
+        userId: '2',
         isRead: false,
         text: 'Hello from Lucas 3',
       },
       {
-        user: {
-          id: '2',
-          isOnline: true,
-          userPic: 'horse',
-          userName: 'Lucas',
-          userInfo: []
-        },
+        userId: '2',
         isRead: false,
         text: 'Hello from Lucas 4',
       },
       {
-        user: {
-          id: '1',
-          isOnline: true,
-          userPic: 'bull',
-          userName: 'Tom',
-          userInfo: []
-        },
+        userId: '1',
         isRead: false,
         text: 'Hello from Tom 5',
       },
@@ -68,35 +38,17 @@ export const CHATS: IChatsBase = {
     palsId: ['1', '4'],
     messages: [
       {
-        user: {
-          id: '1',
-          isOnline: true,
-          userPic: 'bull',
-          userName: 'Tom',
-          userInfo: []
-        },
+        userId: '1',
         isRead: false,
         text: 'Hello from Tom 1',
       },
       {
-        user: {
-          id: '1',
-          isOnline: true,
-          userPic: 'bull',
-          userName: 'Tom',
-          userInfo: []
-        },
+        userId: '1',
         isRead: false,
         text: 'Hello from Tom 2',
       },
       {
-        user: {
-          id: '4',
-          isOnline: true,
-          userPic: 'dolphin',
-          userName: 'Mia',
-          userInfo: []
-        },
+        userId: '4',
         isRead: false,
         text: 'Hello from Mia 3',
       },
@@ -107,35 +59,17 @@ export const CHATS: IChatsBase = {
     palsId: ['2','5'],
     messages: [
       {
-        user: {
-          id: '5',
-          isOnline: true,
-          userPic: 'cat',
-          userName: 'Sophia',
-          userInfo: []
-        },
+        userId: '5',
         isRead: false,
         text: 'Hello from Sophia 1',
       },
       {
-        user: {
-          id: '5',
-          isOnline: true,
-          userPic: 'cat',
-          userName: 'Sophia',
-          userInfo: []
-        },
+        userId: '5',
         isRead: false,
         text: 'Hello from Sophia 2',
       },
       {
-        user: {
-          id: '2',
-          isOnline: true,
-          userPic: 'horse',
-          userName: 'Lucas',
-          userInfo: []
-        },
+        userId: '2',
         isRead: false,
         text: 'Hello from Lucas 3',
       },

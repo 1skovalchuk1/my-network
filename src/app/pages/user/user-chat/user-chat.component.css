@@ -1,0 +1,16 @@
+.block-message-dashboard {
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: overlay;
+  width: 700px;
+  height: 70vh;
+  padding: 15px;
+  border: 1px solid var(--gray);
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.block-new-message {
+  display: flex;
+  flex-direction: row;
+}

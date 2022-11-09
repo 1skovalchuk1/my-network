@@ -6,10 +6,14 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ButtonComponent } from './items/button/button.component';
 import { HintComponent } from './hint/hint.component';
-import { LinksComponent } from './items/links/links.component';
+import { LinksComponent } from './links/links.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { MessageComponent } from './message/message/message.component';
+import { InputComponent } from './items/input/input.component';
+import { TextareaComponent } from './items/textarea/textarea.component';
+import { PComponent } from './items/p/p.component';
+import { ImgComponent } from './items/img/img.component';
 
 
 @NgModule({
@@ -21,6 +25,10 @@ import { MessageComponent } from './message/message/message.component';
     LinksComponent,
     FormComponent,
     MessageComponent,
+    InputComponent,
+    TextareaComponent,
+    PComponent,
+    ImgComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +43,11 @@ import { MessageComponent } from './message/message/message.component';
     LinksComponent,
     FormComponent,
     MessageComponent,
+    InputComponent,
+    TextareaComponent,
+    PComponent,
+    ImgComponent,
   ]
 })
+
 export class ComponentsModule { }

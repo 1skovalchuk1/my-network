@@ -1,0 +1,88 @@
+.img-button {
+  object-position: -25px 0;
+  clip-path: inset(0 25% 0 25%);
+  cursor: pointer;
+  width: 100px;
+}
+
+.img-button:hover,
+.img-button-hover {
+  object-position: 25px 0;
+}
+
+/* ********************************* */
+
+.user-add-pal--refresh {
+  object-position: 0;
+  clip-path: none;
+  width: 25px;
+  transition: transform 1s;
+}
+
+.user-add-pal--refresh:hover {
+  object-position: 0;
+  transform: rotate(360deg);
+}
+
+.user-add-pal--spinner {
+  object-position: 90px 0;
+  clip-path: inset(0 33% 0 33%);
+  width: 270px;
+  animation-name: spinner;
+  animation-duration: 0.3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spinner {
+  0%   {object-position: 90px 0;}
+  0.0001%   {object-position: 0px 0;}
+  25%  {object-position: 0px 0;}
+  25.0001%  {object-position: -90px 0;}
+  50%  {object-position: -90px 0;}
+  50.0001%  {object-position: 0px 0;}
+  75%  {object-position: 0px 0;}
+  75.0001%  {object-position: 90px 0;}
+  100% {object-position: 90px 0;}
+}
+
+/* ********************************* */
+
+.user-pal--userpic {
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-pal--send-message {
+  object-position: -50px 0%;
+  clip-path: inset(0 25% 0 25%);
+  cursor: pointer;
+  width: 200px;
+}
+
+.user-pal--send-message:hover {
+  object-position: 50px 0;
+}
+
+/* ********************************* */
+
+.user-chats--userpic {
+  width: 50px;
+}
+
+.user-settings--trash {
+  object-position: -15px 0;
+  clip-path: inset(0 25% 0 25%);
+  cursor: pointer;
+  width: 60px;
+}
+
+.user-settings--trash:hover {
+  object-position: 15px 0;
+}
+
+.user-home--userpic,
+.user-settings--userpic {
+  width: 200px;
+}

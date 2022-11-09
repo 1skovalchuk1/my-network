@@ -103,6 +103,16 @@ export class UserService {
     }
   }
 
+  updateData(newUserData:IUser | null) {
+    if (localStorage.getItem( 'currentUser' ) && newUserData) {
+      const {id, userPic, userName, userInfo} = newUserData
+      const newPalData = {...PALS[id], userPic, userName, userInfo}
+      localStorage.setItem('currentUser', JSON.stringify(newUserData))
+      PALS[id] = newPalData
+      this.user = newUserData
+    }
+  }
+
   sendMessage() {}
 
   editMessage() {}

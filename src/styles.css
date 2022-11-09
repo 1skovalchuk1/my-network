@@ -37,7 +37,7 @@ input:-webkit-autofill {
   -webkit-text-fill-color: var(--gray);
 }
 
-p, input, a {
+input, a {
   font-size: 15px;
 }
 
@@ -46,15 +46,17 @@ ul {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
   background: inherit;
+  margin: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--gray);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

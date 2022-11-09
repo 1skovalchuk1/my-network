@@ -1,0 +1,26 @@
+<div class="wrapper-chat">
+  <div #chatWindow class="block-message-dashboard" >
+    <div class="block-message-wrapper">
+      <app-message *ngFor="let message of messages"
+        [isCurrentUser]="getUsersData(message.userId).id === currentUser?.id"
+        [pal]="getUsersData(message.userId)"
+        [message]="message"></app-message>
+    </div>
+  </div>
+  <div class="block-new-message">
+    <app-textarea
+      (keydown)="sendMessageOrNewLine($event)"
+      [(ngModel)]="message"
+      textareaClass="user-chat--new-message"
+      textareaPlaceholder="new-message"
+      ngDefaultControl
+    ></app-textarea>
+    <app-button
+      buttonType="button"
+      btnClass="button"
+      imgNameSrc="send-message"
+      [imgClass]="isMessageSend ? 'img-button-hover' : ''"
+      (click)="sendMessage()"
+    ></app-button>
+  </div>
+</div>

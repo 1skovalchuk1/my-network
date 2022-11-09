@@ -9,7 +9,7 @@
   border-radius: 10px;
 
   cursor: pointer;
-  margin: 15px 20px;
+  margin: 20px 0;
   width: 400px;
   height: 75px;
   transition-property:box-shadow;
@@ -20,33 +20,6 @@
   box-shadow: 0px 0px 40px -5px white;
 }
 
-.search-name-input {
-  display: block;
-  margin: 80px auto 0 auto;
-  background-color: transparent;
-  border: none;
-  box-shadow: 0px 2px 1px -1px var(--gray);
-  width: 400px
-}
-
-.search-name-input:focus {
-  outline: none;
-}
-
-img {
-  width: 25px;
-  flex: 1;
-}
-
-p {
-  display: inline-block;
-  margin-left: 20px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 250px;
-}
-
 .pals {
   display: flex;
   flex-wrap: wrap;
@@ -55,11 +28,4 @@ p {
   overflow-y: scroll;
   height: calc(100vh - 98px);
   width: calc(100vw - 100px);
-}
-
-.icons-flex {
-  display: flex;
-  flex-wrap: wrap;
-  width: 50px;
-  height: 75px;
 }

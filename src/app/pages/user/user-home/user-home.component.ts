@@ -10,6 +10,7 @@ import { UserService } from '../services/user.service';
 export class UserHomeComponent implements OnInit {
 
   currentUser: IUser | null = null
+  userPic: string = ''
 
   constructor(
     private userService: UserService,
@@ -17,6 +18,9 @@ export class UserHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.userService.user
+    if (this.currentUser) {
+      this.userPic = this.currentUser.userPic
+    }
   }
 
 }

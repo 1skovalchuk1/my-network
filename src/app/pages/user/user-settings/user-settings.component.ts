@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser, TUserPic } from 'src/app/interfaces/user';
 import { UserService } from '../services/user.service';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-user-settings',
@@ -11,9 +11,9 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 export class UserSettingsComponent implements OnInit {
 
   currentUser: IUser | null = null
-  userPic:TUserPic   | null = null
+  userPic:string = ''
   userInfoFormGroup: FormGroup = new FormGroup({})
-  // userInfoForm: FormArray<FormGroup> = new FormArray([] as Array<any>)
+  userInfoForm: FormArray<FormGroup> = new FormArray([] as Array<FormGroup>)
   userPics:Array<TUserPic> = [
     'bear',
     'bull',
@@ -37,18 +37,13 @@ export class UserSettingsComponent implements OnInit {
     private userService: UserService,
   ) {}
 
-  get refForm() {
-    return this.userInfoFormGroup.get('info') as FormArray<FormGroup>;
-  }
-
   ngOnInit(): void {
     this.currentUser = this.userService.user
     if (this.currentUser) {
       this.userPic = this.currentUser.userPic
       this.getUserInfoFormArray()
     }
-    // console.log(this.userInfoForm)
-    // console.log(this.userInfoForm?.controls.forEach((e) => console.log(e)))
+    this.userInfoForm = this.userInfoFormGroup.get('info') as FormArray<FormGroup>
   }
 
   getUserInfoFormArray() {
@@ -60,21 +55,11 @@ export class UserSettingsComponent implements OnInit {
             return new FormGroup({
               title: new FormControl(title),
               value: new FormControl(value),
-          })
+            })
           }
         ) || []
       )
     })
-    // this.userInfoForm = new FormArray(
-    //   this.currentUser?.userInfo.map(
-    //     ({title, value}) => {
-    //       return new FormGroup({
-    //         title: new FormControl(title),
-    //         value: new FormControl(value),
-    //     })
-    //     }
-    //   ) || []
-    // )
   }
 
   next() {
@@ -97,6 +82,34 @@ export class UserSettingsComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.userInfoFormGroup)
+    const userName = this.userInfoFormGroup.get('name')?.value
+    if (this.currentUser && this.userPic && userName) {
+      const newUserInfo = this.userInfoForm.controls.map((i) => i.value)
+      const newUserData = {...this.currentUser,
+                            userInfo: newUserInfo,
+                            userPic: this.userPic as TUserPic,
+                            userName,
+                          }
+      this.userService.updateData(newUserData)
+    }
+
+  }
+
+  addInfo() {
+    this.userInfoForm.push(
+      new FormGroup({
+        title: new FormControl(),
+        value: new FormControl(),
+      })
+    )
+  }
+
+  removeInfo(i:number) {
+    this.userInfoForm.removeAt(i)
+  }
+
+  cancel() {
+    this.getUserInfoFormArray()
+    this.userInfoForm = this.userInfoFormGroup.get('info') as FormArray<FormGroup>
   }
 }

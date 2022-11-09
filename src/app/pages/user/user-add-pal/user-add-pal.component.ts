@@ -8,16 +8,16 @@ import { UserService } from '../services/user.service';
 })
 export class UserAddPalComponent implements OnInit {
 
-  currentTime:number = Date.now()
-  startTime:number = 0
-  timeOver:boolean = false
-  uuid:string = ''
+  currentTime:number = Date.now();
+  startTime:number = 0;
+  timeOver:boolean = false;
   isDataSend:boolean = false;
+  uuid:string = ''
   palSecretKey = ''
 
   constructor(
     private userService: UserService,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.refreshSecretKey()

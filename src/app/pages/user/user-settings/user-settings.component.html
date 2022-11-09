@@ -3,37 +3,53 @@
     <app-button
       (click)="previous()"
       buttonType="button"
-      imgSrc="/assets/icons/previous.svg"
-      imgClass="page-icon">
-    </app-button>
-    <img class="img-userpic" [src]="'/assets/icons/user/' + userPic + '.svg'">
+      imgNameSrc="previous"
+    ></app-button>
+    <app-img imgClass="user-settings--userpic" [imgNameSrc]="userPic" [isUserPic]="true"></app-img>
     <app-button
       (click)="next()"
       buttonType="button"
-      imgSrc="/assets/icons/next.svg"
-      imgClass="page-icon">
-    </app-button>
+      imgNameSrc="next"
+    ></app-button>
   </div>
   <form [formGroup]="userInfoFormGroup" class="wrapper-user-info">
-    <input formControlName="name" class="change-name-input" spellcheck="false"/>
-    <ng-container *ngFor="let form of refForm.controls">
-      <form class="form-block" [formGroup]="form">
-        <input    formControlName="title" class="change-info-input" spellcheck="false"/>
-        <textarea formControlName="value" class="change-info-textarea" spellcheck="false"></textarea>
+    <app-input
+      inputClass="user-settings--change-name-input"
+      inputPlaceholder="user-name"
+      formControlName="name"
+      ngDefaultControl
+    ></app-input>
+      <form *ngFor="let form of userInfoForm.controls let i = index" class="form-block" [formGroup]="form">
+        <app-button
+          btnClass="user-settings--trash"
+          (click)="removeInfo(i)"
+          buttonType="button"
+          imgNameSrc="remove-info"
+          imgClass="user-settings--trash"></app-button>
+        <app-input
+          inputClass="user-settings--change-info-input"
+          inputPlaceholder="title"
+          formControlName="title"
+          ngDefaultControl
+        ></app-input>
+        <app-textarea formControlName="value" ngDefaultControl></app-textarea>
       </form>
-    </ng-container>
   </form>
+  <app-button
+    (click)="addInfo()"
+    buttonType="button"
+    imgNameSrc="add-info"
+  ></app-button>
   <div class="button-wrapper">
     <app-button
+      (click)="cancel()"
       buttonType="button"
-      imgSrc="/assets/icons/cancel.svg"
-      imgClass="page-icon">
-    </app-button>
+      imgNameSrc="cancel"
+    ></app-button>
     <app-button
       (click)="submit()"
       buttonType="button"
-      imgSrc="/assets/icons/ok.svg"
-      imgClass="page-icon">
-    </app-button>
+      imgNameSrc="ok"
+    ></app-button>
   </div>
 </div>

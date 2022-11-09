@@ -1,10 +1,8 @@
-import { IPal } from "./pals"
-
 type TChat = Array<IMessage>
 type TPalsId = Array<string>
 
 export interface IMessage {
-  user: IPal,
+  userId: string,
   isRead: boolean,
   text: string,
 }
@@ -12,10 +10,10 @@ export interface IMessage {
 export interface IChat {
   id: string,
   palsId: TPalsId,
-  messages: TChat
+  messages: TChat,
 }
 
 export interface IChatsBase {
-  [id:string]: IChat
+  [id:string]: IChat,
 }
 

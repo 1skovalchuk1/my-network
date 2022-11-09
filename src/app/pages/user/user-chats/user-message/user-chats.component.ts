@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/app/interfaces/user';
 import { PALS } from 'src/app/mock-data/pals-base';
-import { CHATS } from 'src/app/mock-data/chats-base';
 import { UserService } from '../../services/user.service';
-import { IChat } from 'src/app/interfaces/chats';
 import { IPal } from 'src/app/interfaces/pals';
 
 @Component({

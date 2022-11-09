@@ -1,26 +1,8 @@
-.img-userpic {
-  width: 200px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.user-info-title {
-  font-size: 18px;
-  margin: 20px 0px 5px 15px;
-  font-weight: bold;
-}
-
-.user-info-value {
-  margin-left: 25px;
-}
-
-.user-name {
-  margin: 15px 0;
-  font-size: 30px;
-  text-align: center;
-}
-
 .wrapper-user-info {
   max-width: 500px;
+  text-align: left;
+}
+
+.wrapper-home {
+  text-align: center;
 }
