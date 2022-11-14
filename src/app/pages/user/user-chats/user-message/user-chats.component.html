@@ -1,20 +1,19 @@
-<div class="wrapper-pals">
-  <div class="pals">
-    <app-input
-      inputClass="user-chats--search-name-input"
-      inputPlaceholder="search-pals"
-      [(ngModel)]="searchChat"
-      ngDefaultControl
-    ></app-input>
-    <ul>
-      <li *ngFor="let pal of (pals | filter: searchChat: 'userName')">
-        <a [routerLink]="['/user/chats/', getChatId(pal.id)]">
-          <div class="pal">
-            <app-img imgClass="user-chats--userpic" [imgNameSrc]="pal.userPic" [isUserPic]="true"></app-img>
-            <app-p pClass="user-chats--p">{{pal.userName}}</app-p>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
+<div class="pals">
+  <app-input
+    inputClass="user-chats--search-name-input"
+    inputPlaceholder="search-pals"
+    [(ngModel)]="searchChat"
+    ngDefaultControl
+  ></app-input>
+  <ul>
+    <li *ngFor="let data of (palsData | filter: searchChat: 'userName')">
+      <a [routerLink]="['/user/chats/', data.chatId]">
+        <div class="pal">
+          <app-img imgClass="user-chats--userpic" [imgNameSrc]="data.userPic" [isUserPic]="true"></app-img>
+          <app-p pClass="user-chats--p">{{data.userName}}</app-p>
+          <app-p pClass="user-chats--p">{{data.lastMessage.text}}</app-p>
+        </div>
+      </a>
+    </li>
+  </ul>
 </div>

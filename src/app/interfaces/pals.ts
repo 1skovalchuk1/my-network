@@ -1,7 +1,16 @@
+import { IMessage } from './chats'
 import {TInfo, TUserPic} from './user'
 
+export interface IParsePalData {
+  palId: string,
+  isOnline: boolean,
+  userPic: TUserPic,
+  userName: string,
+  lastMessage: IMessage,
+}
+
 export interface IPal {
-  id: string,
+  palId: string,
   isOnline: boolean,
   userPic: TUserPic,
   userName: string,

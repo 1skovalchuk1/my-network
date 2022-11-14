@@ -1,26 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IUser } from 'src/app/interfaces/user';
 import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-home',
-  templateUrl: './user-home.component.html',
-  styleUrls: ['./user-home.component.css']
+  template: `
+    <app-user-info [user]="user"></app-user-info>
+  `
 })
-export class UserHomeComponent implements OnInit {
+export class UserHomeComponent {
 
-  currentUser: IUser | null = null
-  userPic: string = ''
+  user:IUser | null = null
 
   constructor(
     private userService: UserService,
   ) {}
 
   ngOnInit(): void {
-    this.currentUser = this.userService.user
-    if (this.currentUser) {
-      this.userPic = this.currentUser.userPic
-    }
+    this.user = this.userService.user
   }
 
 }

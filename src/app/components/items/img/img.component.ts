@@ -1,10 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-img',
   template: `
   <img
-    [src]="isUserPic ? '/assets/icons/user/' + imgNameSrc + '.svg' : '/assets/icons/' + imgNameSrc + '.svg'"
+    [src]="isUserPic ?
+          '/assets/icons/user/' + imgNameSrc + '.svg':
+          '/assets/icons/' + imgNameSrc + '.svg'"
     [class]="imgClass">
   `,
   styleUrls: ['./img.component.css']
@@ -12,6 +14,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ImgComponent {
 
   @Input() imgClass: string = ''
+  @Input() activeLinkClass: string = ''
   @Input() imgNameSrc: string = ''
   @Input() isUserPic?: boolean = false
 

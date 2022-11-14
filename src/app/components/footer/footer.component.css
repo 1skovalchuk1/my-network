@@ -19,10 +19,3 @@
 .footer-link:hover {
   color: var(--footer-hover);
 }
-
-.footer-icon {
-  width: 30px;
-}
-.footer-icon:hover {
-  filter: brightness(0%);
-}

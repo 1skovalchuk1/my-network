@@ -1,35 +1,28 @@
-<div class="add-pal-wrapper">
-  <app-p pClass="user-add-pal--p" *ngIf="isDataSend">Please wait your pal...</app-p>
-  <app-img *ngIf="isDataSend" imgNameSrc="spinner" imgClass="user-add-pal--spinner"></app-img>
-  <ng-container *ngIf="!isDataSend">
-    <app-p pClass="user-add-pal--p">secret key lifetime: {{startTime | date:'mm:ss'}}</app-p>
-    <app-p *ngIf="timeOver" pClass="user-add-pal--p">Please refresh your secret key</app-p>
-    <div class="secret-key-block">
-      <app-p pClass="user-add-pal--p">your secret key:</app-p>
-      <app-p pClass="user-add-pal--secret-key">{{uuid}}</app-p>
-      <app-button
-        (click)="refreshSecretKey()"
-        buttonType="button"
-        btnClass="user-add-pal--refresh"
-        imgNameSrc="reload"
-        imgClass="user-add-pal--refresh">
-      </app-button>
-    </div>
-    <div class="secret-key-block">
-      <app-p pClass="user-add-pal--p">pal's secret key:</app-p>
-      <app-input inputClass="user-add-pal--input-secret-key" [(ngModel)]="palSecretKey" ngDefaultControl></app-input>
-    </div>
-  </ng-container>
-  <div class="button-wrapper">
+<app-spinner
+  [isLoading]="isLoading"
+  waitingText="wait for your pal..."
+></app-spinner>
+<ng-container *ngIf="!isLoading">
+  <app-p pClass="user-add-pal--p">secret key lifetime: {{startTime | date:'mm:ss'}}</app-p>
+  <app-p *ngIf="timeOver" pClass="user-add-pal--p">Please refresh your secret key</app-p>
+  <div class="secret-key-block">
+    <app-p pClass="user-add-pal--p">your secret key:</app-p>
+    <app-p pClass="user-add-pal--secret-key">{{uuid}}</app-p>
     <app-button
-      (click)="cancel()"
-      buttonType="button"
-      imgNameSrc="cancel"
-    ></app-button>
-    <app-button
-      (click)="addPal()"
-      buttonType="button"
-      imgNameSrc="ok"
-    ></app-button>
+      (click)="refreshSecretKey()"
+      btnClass="user-add-pal--refresh"
+      imgNameSrc="reload"
+      imgClass="user-add-pal--refresh">
+    </app-button>
   </div>
-</div>
+  <div class="secret-key-block">
+    <app-p pClass="user-add-pal--p">pal's secret key:</app-p>
+    <app-input inputClass="user-add-pal--input-secret-key" [(ngModel)]="palSecretKey" ngDefaultControl></app-input>
+  </div>
+  <app-two-buttons
+    class="button-wrapper"
+    [imgNamesSrc]="['cancel','ok']"
+    (fnFirstButton)="cancel()"
+    (fnSecondButton)="addPal()"
+  ></app-two-buttons>
+</ng-container>

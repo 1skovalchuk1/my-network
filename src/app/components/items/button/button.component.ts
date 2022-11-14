@@ -6,7 +6,7 @@ import { FormGroup } from '@angular/forms';
   template: `
     <button [type]="buttonType"
             [class]="'button ' + btnClass"
-            [ngClass]="form?.invalid && buttonType === 'submit' ? 'disable-icon' : ''">
+            [ngClass]="form?.invalid ? 'disable-icon' : ''">
       <app-img
         [routerLink]="link ? link : null"
         [imgNameSrc]="imgNameSrc"
@@ -18,10 +18,10 @@ import { FormGroup } from '@angular/forms';
 export class ButtonComponent implements OnInit {
 
   @Input() link?:Array<string> | string;
-  @Input() imgClass:string = '';
-  @Input() btnClass:string = '';
-  @Input() buttonType:string = '';
-  @Input() imgNameSrc:string = '';
+  @Input() imgClass:string = ''
+  @Input() btnClass:string = 'button'
+  @Input() buttonType:string = 'button'
+  @Input() imgNameSrc:string = ''
   @Input() form?:FormGroup;
 
 

@@ -5,43 +5,26 @@
   height: 100vh;
   min-height: 200px;
   box-shadow: 15px 0 10px -15px var(--gray);
-}
-
-.link-icon {
-  object-position: -25px 0%;
-  clip-path: inset(0 25% 0 25%);
-  cursor: pointer;
+  text-align: center;
   width: 100px;
 }
 
-.link-icon-active {
-  object-position: 25px 0;
-  box-shadow: -10px 0px 20px 0px white;
+app-img {
+  display: block;
 }
 
-.link-icon-logout {
-  object-position: -25px 0%;
-  clip-path: inset(0 25% 0 25%);
-  cursor: pointer;
-  width: 100px;
-}
-
-.link-icon-logout:hover {
-  object-position: 25px 0;
-}
-
-.new-message {
+.nav--new-message {
   position: relative
 }
 
-.new-message::after {
+.nav--new-message::after {
   width: 40px;
   height: 20px;
   background-image: url('/assets/icons/unread-message.svg');
   content: '';
   position: absolute;
   top: 40px;
-  left: 70px;
+  left: 20px;
   background-repeat: no-repeat;
   animation-name: message;
   animation-duration: 2s;

@@ -10,12 +10,11 @@ interface InputData {
 }
 
 interface ButtonData {
-  [type: string]: Array<{
-    imgSrc: string,
-    imgClass: string,
-    buttonType: string,
-    link: string | Array<string>,
-  }>
+  [type: string]: {
+    imgNamesSrc: Array<string>,
+    types: Array<string>,
+    links: Array<string | Array<string>>,
+  }
 }
 
 @Injectable({
@@ -29,22 +28,24 @@ export class FormService {
       {id: 'password', type: 'password', formControlName: 'password', placeholder: 'password'},
     ],
     'registration': [
-      {id: '',         type: '',         formControlName: 'userName',        placeholder: 'user-name'},
-      {id: 'email',    type: 'email',    formControlName: 'email',           placeholder: 'email'},
-      {id: 'password', type: 'password', formControlName: 'password',        placeholder: 'password'},
-      {id: '',         type: 'password', formControlName: 'confirmPassword', placeholder: 'confirm-password'},
+      {id: 'userName',        type: '',         formControlName: 'userName',        placeholder: 'user-name'},
+      {id: 'email',           type: 'email',    formControlName: 'email',           placeholder: 'email'},
+      {id: 'password',        type: 'password', formControlName: 'password',        placeholder: 'password'},
+      {id: 'confirmPassword', type: 'password', formControlName: 'confirmPassword', placeholder: 'confirm-password'},
     ]
   }
 
   buttonsData:ButtonData = {
-    'auth': [
-      {imgSrc: 'login',        imgClass: '', buttonType: 'submit', link: []},
-      {imgSrc: 'registration', imgClass: '', buttonType: 'button', link: ['/registration']},
-    ],
-    'registration': [
-      {imgSrc: 'ok',     imgClass: '', buttonType: 'submit', link: []},
-      {imgSrc: 'cancel', imgClass: '', buttonType: 'button', link: ['/']},
-    ]
+    'auth': {
+      types:       ['button',        'submit'],
+      imgNamesSrc: ['registration',  'login'],
+      links:       ['/registration', '']
+    },
+    'registration': {
+      types:       ['button', 'submit'],
+      imgNamesSrc: ['cancel', 'ok'],
+      links:       ['/',      '']
+    }
   }
 
   constructor() { }

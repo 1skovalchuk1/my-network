@@ -1,55 +1,42 @@
-<div class="wrapper-home">
-  <div class="change-userpic-block">
-    <app-button
-      (click)="previous()"
-      buttonType="button"
-      imgNameSrc="previous"
-    ></app-button>
-    <app-img imgClass="user-settings--userpic" [imgNameSrc]="userPic" [isUserPic]="true"></app-img>
-    <app-button
-      (click)="next()"
-      buttonType="button"
-      imgNameSrc="next"
-    ></app-button>
-  </div>
-  <form [formGroup]="userInfoFormGroup" class="wrapper-user-info">
-    <app-input
-      inputClass="user-settings--change-name-input"
-      inputPlaceholder="user-name"
-      formControlName="name"
-      ngDefaultControl
-    ></app-input>
-      <form *ngFor="let form of userInfoForm.controls let i = index" class="form-block" [formGroup]="form">
-        <app-button
-          btnClass="user-settings--trash"
-          (click)="removeInfo(i)"
-          buttonType="button"
-          imgNameSrc="remove-info"
-          imgClass="user-settings--trash"></app-button>
-        <app-input
-          inputClass="user-settings--change-info-input"
-          inputPlaceholder="title"
-          formControlName="title"
-          ngDefaultControl
-        ></app-input>
-        <app-textarea formControlName="value" ngDefaultControl></app-textarea>
-      </form>
-  </form>
-  <app-button
-    (click)="addInfo()"
-    buttonType="button"
-    imgNameSrc="add-info"
-  ></app-button>
-  <div class="button-wrapper">
-    <app-button
-      (click)="cancel()"
-      buttonType="button"
-      imgNameSrc="cancel"
-    ></app-button>
-    <app-button
-      (click)="submit()"
-      buttonType="button"
-      imgNameSrc="ok"
-    ></app-button>
-  </div>
-</div>
+<app-two-buttons
+  class="change-userpic-block"
+  [imgNamesSrc]="['previous','next']"
+  (fnFirstButton)="previous()"
+  (fnSecondButton)="next()">
+  <app-img imgClass="user-settings--userpic" [imgNameSrc]="userPic" [isUserPic]="true"></app-img>
+</app-two-buttons>
+<form [formGroup]="userInfoFormGroup" class="wrapper-user-info">
+  <app-input
+    inputClass="user-settings--change-name-input"
+    inputPlaceholder="user-name"
+    formControlName="name"
+    ngDefaultControl
+  ></app-input>
+    <form *ngFor="let form of userInfoForm.controls let i = index" class="form-block" [formGroup]="form">
+      <app-button
+        btnClass="user-settings--trash"
+        (click)="removeInfo(i)"
+        buttonType="button"
+        imgNameSrc="remove-info"
+        imgClass="user-settings--trash"></app-button>
+      <app-input
+        inputClass="user-settings--change-info-input"
+        inputPlaceholder="title"
+        formControlName="title"
+        ngDefaultControl
+      ></app-input>
+      <app-textarea formControlName="value" ngDefaultControl></app-textarea>
+    </form>
+</form>
+<app-button
+  (click)="addInfo()"
+  buttonType="button"
+  imgNameSrc="add-info"
+></app-button>
+<app-two-buttons
+  class="button-wrapper"
+  [buttonTypes]="['button','submit']"
+  [imgNamesSrc]="['cancel','ok']"
+  (fnFirstButton)="cancel()"
+  (fnSecondButton)="submit()"
+></app-two-buttons>

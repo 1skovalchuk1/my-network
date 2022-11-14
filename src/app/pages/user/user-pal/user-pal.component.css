@@ -1,9 +1,6 @@
-.wrapper-home {
-  margin-top: 50px;
-}
-
 .wrapper-user-info {
   max-width: 500px;
+  text-align: left;
 }
 
 .link-send-message {

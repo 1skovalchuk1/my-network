@@ -1,9 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, UrlTree } from "@angular/router";
-import { select, Store } from "@ngrx/store";
-import { Observable, of, switchMap } from "rxjs";
-import { selectUserIsAuth } from "../store/selectors/user.selectors";
-import { IAppState } from "../store/states/app.state";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +9,7 @@ export class AuthGuard implements CanActivate {
 
   isAuth = false;
 
-  constructor(private store: Store<IAppState>) {}
+  constructor() {}
 
   canActivate(): boolean |
                  UrlTree |

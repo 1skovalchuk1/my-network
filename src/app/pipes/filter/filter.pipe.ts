@@ -6,8 +6,8 @@ import { IPal } from 'src/app/interfaces/pals';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(items: Array<any>, searchItme: string, searchKey: string): Array<any> {
-    if (items.length === 0 || !searchItme) {
+  transform(items: Array<any> | null, searchItme: string, searchKey: string): Array<any> | null {
+    if (!items || items.length === 0 || !searchItme) {
       return items;
     }
     return items.filter((i:any) => i[searchKey].toLowerCase().startsWith(searchItme.toLowerCase()))

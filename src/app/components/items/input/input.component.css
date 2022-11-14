@@ -46,6 +46,5 @@
 .user-chats--search-name-input,
 .user-pals--search-name-input {
   box-shadow: none;
-  margin-top: 80px;
   width: 400px
 }

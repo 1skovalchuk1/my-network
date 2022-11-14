@@ -1,0 +1,12 @@
+<div *ngIf="message"
+  class="flex-my-message"
+  [ngClass]="{
+              'read-message flex-other-message': !message.isCurrentUser,
+              'unread-message': !message.isCurrentUser && !message.isRead
+             }">
+  <div class="my-message">
+    <app-p [pClass]="message.isCurrentUser ? 'message--currentName' : 'message--otherName'">{{message.userName}}</app-p>
+    <app-p [pClass]="message.isCurrentUser ? 'message--currentText' : 'message--otherText'">{{message.text}}</app-p>
+  </div>
+  <app-img imgClass="message--userPic" [imgNameSrc]="message.userPic" [isUserPic]="true"></app-img>
+</div>

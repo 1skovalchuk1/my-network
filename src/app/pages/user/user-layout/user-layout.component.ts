@@ -1,26 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/states/app.state';
-import * as UserActions from '../../../store/actions/user.actions'
 
 @Component({
   selector: 'app-user-layout',
-  templateUrl: './user-layout.component.html',
+  template: `
+    <div class="flex-user-layout">
+      <app-nav [isNewMessage]="isNewMessage"></app-nav>
+      <div class="user-page">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  `,
   styleUrls: ['./user-layout.component.css']
 })
 export class UserLayoutComponent implements OnInit {
 
   isNewMessage:boolean = true
 
-  constructor(private store: Store<IAppState>,
-              private router: Router,) {}
+  constructor() {}
 
   ngOnInit(): void {}
-
-  logout() {
-    this.store.dispatch(UserActions.logoutUser())
-    this.router.navigate(['/'])
-  }
 
 }

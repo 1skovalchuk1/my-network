@@ -1,0 +1,51 @@
+.flex-my-message {
+  display: flex;
+  align-items: flex-end;
+  text-align: end;
+}
+
+.flex-other-message {
+  transform: scaleX(-1);
+  margin-left: -20px;
+}
+
+.my-message {
+  position: relative;
+  width: 300px;
+  margin: 20px 10px 0 0;
+  margin-left: auto;
+  box-shadow: 0 0 0 1px;
+  border-radius: 5px;
+  overflow-wrap: break-word;
+  padding: 20px;
+  background-color: #fff59d;
+}
+
+.unread-message::after {
+  width: 20px;
+  height: 17px;
+  background-image: url('/assets/icons/unread-message.svg');
+  content: '';
+  position: relative;
+  top: 0px;
+  left: -93px;
+  background-repeat: no-repeat;
+}
+
+.read-message::after {
+  width: 20px;
+  content: '';
+}
+
+.my-message::after {
+  width: 10px;
+  height: 10px;
+  content: ' ';
+  position: absolute;
+  bottom: 15px;
+  right: -5px;
+  clip-path: polygon(-10% -10%, 110% -10%, 120% 120%, 50% 50%);
+  transform: rotate(45deg);
+  background-color: #fff59d;;
+  box-shadow: 0 0 0 1px;
+}

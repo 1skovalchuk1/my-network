@@ -1,20 +1,27 @@
-.img-button {
-  object-position: -25px 0;
-  clip-path: inset(0 25% 0 25%);
+.img-button,
+.nav--img-logout,
+.nav--img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  object-position: -50px 0;
   cursor: pointer;
-  width: 100px;
 }
 
 .img-button:hover,
-.img-button-hover {
-  object-position: 25px 0;
+.img-button-hover,
+.nav--img-logout:hover,
+.nav--img-active,
+.user-settings--trash:hover,
+.user-pal--send-message:hover {
+  object-position: 0;
 }
 
 /* ********************************* */
 
 .user-add-pal--refresh {
   object-position: 0;
-  clip-path: none;
+  height: 25px;
   width: 25px;
   transition: transform 1s;
 }
@@ -24,7 +31,9 @@
   transform: rotate(360deg);
 }
 
-.user-add-pal--spinner {
+/* ********************************* */
+
+.spinner--img {
   object-position: 90px 0;
   clip-path: inset(0 33% 0 33%);
   width: 270px;
@@ -55,14 +64,11 @@
 }
 
 .user-pal--send-message {
-  object-position: -50px 0%;
-  clip-path: inset(0 25% 0 25%);
+  object-position: -100px 0%;
+  object-fit: cover;
   cursor: pointer;
-  width: 200px;
-}
-
-.user-pal--send-message:hover {
-  object-position: 50px 0;
+  width: 100px;
+  height: 100px;
 }
 
 /* ********************************* */
@@ -72,17 +78,29 @@
 }
 
 .user-settings--trash {
-  object-position: -15px 0;
-  clip-path: inset(0 25% 0 25%);
+  object-position: -30px 0;
   cursor: pointer;
-  width: 60px;
-}
-
-.user-settings--trash:hover {
-  object-position: 15px 0;
+  width: 30px;
+  height: 30px;
 }
 
 .user-home--userpic,
 .user-settings--userpic {
   width: 200px;
+}
+
+/* ********************************* */
+
+.message--userPic {
+  width: 60px;
+  transform: scaleX(-1);
+}
+
+/* ********************************* */
+
+.footer--link {
+  width: 30px;
+}
+.footer--link:hover {
+  filter: brightness(0%);
 }

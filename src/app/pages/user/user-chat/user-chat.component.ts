@@ -1,12 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IMessage } from 'src/app/interfaces/chats';
-import { IPal } from 'src/app/interfaces/pals';
-import { IUser } from 'src/app/interfaces/user';
-import { CHATS } from 'src/app/mock-data/chats-base';
-import { PALS } from 'src/app/mock-data/pals-base';
+import { IParseMessage } from 'src/app/interfaces/chats';
 import { UserService } from '../services/user.service';
-
 
 @Component({
   selector: 'app-user-chat',
@@ -15,14 +10,12 @@ import { UserService } from '../services/user.service';
 })
 export class UserChatComponent implements OnInit {
 
-  currentUser:IUser | null = null
-
   @ViewChild('chatWindow') chatWindow: ElementRef;
 
-  isMessageSend = false
+  isMessageSend:boolean = false
   message:string = ''
-  messages:Array<IMessage> = []
-  palsData:Array<IPal> = []
+  messages:Array<IParseMessage> = []
+  chatId: string = ''
 
   constructor(
     private userService: UserService,
@@ -34,25 +27,27 @@ export class UserChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.scrollToBottom()
-    this.currentUser = this.userService.user
-    this.messages = CHATS[this.route.snapshot.params['id']].messages
-  }
-
-  getUsersData(id:string) {
-    return PALS[id]
+    this.chatId = this.route.snapshot.params['id']
+    this.messages = this.userService.parseMessages(this.chatId)
   }
 
   scrollToBottom(): void {
     this.chatWindow.nativeElement.scrollTop = 0
   }
 
-  sendMessage() {
-    if (this.currentUser && this.message.trim()) {
-      this.messages.push({
-        userId: this.currentUser.id,
-        isRead: false,
-        text:this.message.trim()})
+  readMessage(messageId:number, message: IParseMessage) {
+    if (!message.isCurrentUser && !message.isRead) {
+      this.userService.readMessage(this.chatId, messageId)
+      // webSockets
+      this.messages = this.userService.parseMessages(this.chatId)
     }
+  }
+
+  sendMessage() {
+    this.userService.sendMessage(this.message, this.chatId)
+          // webSockets
+    this.messages = this.userService.parseMessages(this.chatId)
+
     this.message = ''
     setTimeout(() => this.isMessageSend = !this.isMessageSend, 300)
     this.isMessageSend = !this.isMessageSend

@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { HintService } from 'src/app/components/hint/services/hint.service';
-import { IAppState } from 'src/app/store/states/app.state';
-import * as UserActions from 'src/app/store/actions/user.actions'
-import * as HintActions from 'src/app/store/actions/hint.actions'
+import { HintService } from 'src/app/hint/services/hint.service';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { USERS } from 'src/app/mock-data/users-base';
@@ -18,11 +15,11 @@ import { CHATS } from 'src/app/mock-data/chats-base';
 })
 export class UserService {
 
-  user: IUser | null = null
+  
+  user: IUser | null = null;
 
   constructor(
     private hintService: HintService,
-    private store: Store<IAppState>,
     private router: Router,
     ) {
       if (localStorage.getItem( 'currentUser' )) {
@@ -34,7 +31,6 @@ export class UserService {
     const {email, password} = authForm.value
     if (email && password) {
       if (!this.hintService.isInvalidForm(authForm)) {
-        this.store.dispatch(UserActions.loginUser({email, password}))
         this.router.navigate(['/user/home'])
       }
     }
@@ -43,14 +39,14 @@ export class UserService {
   authenticate({ email, password }: { email: string, password: string}) {
     if (USERS[email] && USERS[email].password === password) {
       if (USERS[email].isOnline) {
-        this.store.dispatch(HintActions.setHint({message: 'user already login'}))
+        // this.store.dispatch(HintActions.setHint({message: 'user already login'}))
         return EMPTY
       }
       localStorage.setItem('currentUser', JSON.stringify(USERS[email]))
       this.user = JSON.parse(localStorage.getItem( 'currentUser' ) || '')
       return of(USERS[email])
     }
-    this.store.dispatch(HintActions.setHint({message: 'email or password is incorrect'}))
+    // this.store.dispatch(HintActions.setHint({message: 'email or password is incorrect'}))
     return EMPTY
   }
 
@@ -65,13 +61,12 @@ export class UserService {
         userPic: 'bull' as const,
         userName,
         userInfo: [],
-        chats: [],
-        pals: []
+        palsData: [],
       }
       USERS[email] =  newUser
 
       const newPal = {
-        id: newUser.id,
+        palId: newUser.id,
         isOnline: newUser.isOnline,
         userPic: newUser.userPic,
         userName,
@@ -90,17 +85,20 @@ export class UserService {
       if (SECRET_KEY_BASE[palSecretKey]) {
         const addPalId = SECRET_KEY_BASE[palSecretKey].id
         CHATS[newChatId] = {
-          id: newChatId,
+          chatId: newChatId,
           palsId: [addPalId, id],
           messages: []
         }
         USERS[email] = {...USERS[email],
-                            pals:[...USERS[email].pals, addPalId],
-                            chats:[...USERS[email].chats, newChatId]}
+                           palsData: [...USERS[email].palsData, {palId: addPalId, palChatId: newChatId}]}
         this.user = USERS[email]
         localStorage.setItem('currentUser', JSON.stringify(USERS[email]))
       }
     }
+  }
+
+  getPalInfo(id:string) {
+    return PALS[id]
   }
 
   updateData(newUserData:IUser | null) {
@@ -113,15 +111,54 @@ export class UserService {
     }
   }
 
-  sendMessage() {}
+  parseMessages(chatId: string) {
+    const userId = this.user?.id
+    const messages = CHATS[chatId].messages
+    return messages.map((i) => {
+      return i.userId === userId ? {...i, isCurrentUser: true} : {...i, isCurrentUser: false}
+    })
+  }
+
+  sendMessage(message:string, chatId: string) {
+    const trimMessage = message.trim()
+    if (this.user && trimMessage) {
+      CHATS[chatId].messages.push({
+        userId: this.user.id,
+        userName: this.user.userName,
+        userPic: this.user.userPic,
+        isRead: false,
+        text: trimMessage})
+    }
+  }
+
+  readMessage(chatId: string, idMessage: number) {
+    CHATS[chatId].messages[idMessage].isRead = true
+  }
+
+  parsePalsData() {
+    if (this.user) {
+      return this.user.palsData.map((i) => {
+        const {chatId, messages} = CHATS[i.palChatId]
+        const lastMessage = messages[messages.length - 1]
+        const {palId, isOnline, userPic, userName} = PALS[i.palId]
+        return {
+          palId,
+          chatId,
+          isOnline,
+          userPic,
+          userName,
+          lastMessage,
+        }
+      })
+    }
+    return null
+  }
 
   editMessage() {}
 
   removeMessage() {}
 
   removePal() {}
-
-  getUserData() {}
 
   loguot() {}
 

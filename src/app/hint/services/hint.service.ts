@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
-import * as HintActions from 'src/app/store/actions/hint.actions'
 import { Store } from '@ngrx/store';
 import { USERS } from 'src/app/mock-data/users-base';
-import { IAppState } from 'src/app/store/states/app.state';
 
 export type HintControl = [string, Array<[string, string]>]
 export type HintForm = [string, string]
@@ -66,7 +64,7 @@ export class HintService {
     [this.validatorEmailCreated,         'email already in use' ],
   ]
 
-  constructor(private store: Store<IAppState>) { }
+  constructor() { }
 
   ///////////////////// VALIDATORS /////////////////////////
 
@@ -123,6 +121,6 @@ export class HintService {
 
   setHintMessage(form: FormGroup) {
     const message = this.getFormHintMessage(form)
-    this.store.dispatch(HintActions.setHint({message}))
+    // this.store.dispatch(HintActions.setHint({message}))
   }
 }

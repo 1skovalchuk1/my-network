@@ -1,20 +1,15 @@
 <footer class="footer">
   <div class="footer-item">
-    <a 
-      *ngFor="let footerLink of footerLinks"
+    <a *ngFor="let footerLink of footerNav"
       class="footer-link" 
       routerLink=""
     >{{footerLink}}</a>
   </div>
   <div class="footer-item">
-    <a 
-      class="footer-link"
-      [href]="iconData.path"
-      *ngFor="let iconData of iconsData">
-      <img
-        draggable="false"
-        class="footer-icon" 
-        [src]="'assets/icons/' + iconData.name + '.svg'">
+    <a class="footer-link"
+       [href]="iconData.path"
+       *ngFor="let iconData of iconsData">
+      <app-img imgClass="footer--link" [imgNameSrc]="iconData.name"></app-img>
     </a>
   </div>
   <div class="footer-item">

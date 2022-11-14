@@ -18,8 +18,16 @@ export const USERS:IUsersBase = {
           value: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe libero alias quidem repudiandae? Maxime, blanditiis dolores exercitationem voluptate dolorum sint facilis hic, earum in quaerat voluptates saepe? Sequi, incidunt enim.'
         },
       ],
-      pals: ['2', '4'],
-      chats: ['1', '2',]
+      palsData: [
+        {
+          palId: '2',
+          palChatId: '1'
+        },
+        {
+          palId: '4',
+          palChatId: '2'
+        },
+      ]
   },
   'lucas@test.com': {
       id: '2',
@@ -39,8 +47,16 @@ export const USERS:IUsersBase = {
         },
 
       ],
-      pals: ['1', '5'],
-      chats: ['1', '3',],
+      palsData: [
+        {
+          palId: '1',
+          palChatId: '1'
+        },
+        {
+          palId: '5',
+          palChatId: '3'
+        },
+      ]
   },
   'jimmy@test.com': {
       id: '3',
@@ -60,8 +76,7 @@ export const USERS:IUsersBase = {
         },
 
       ],
-      pals: [],
-      chats: []
+      palsData: []
   },
   'mia@test.com': {
       id: '4',
@@ -81,8 +96,16 @@ export const USERS:IUsersBase = {
         },
 
       ],
-      pals: ['1', '5'],
-      chats: ['2', '4']
+      palsData: [
+        {
+          palId: '1',
+          palChatId: '2'
+        },
+        {
+          palId: '5',
+          palChatId: '4'
+        },
+      ]
   },
   'sophia@test.com': {
       id: '5',
@@ -102,7 +125,15 @@ export const USERS:IUsersBase = {
         },
 
       ],
-      pals: ['2', '4'],
-      chats: ['3', '4']
+      palsData: [
+        {
+          palId: '2',
+          palChatId: '3'
+        },
+        {
+          palId: '4',
+          palChatId: '4'
+        },
+      ]
   },
 }

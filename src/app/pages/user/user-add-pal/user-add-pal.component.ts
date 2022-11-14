@@ -8,10 +8,10 @@ import { UserService } from '../services/user.service';
 })
 export class UserAddPalComponent implements OnInit {
 
-  currentTime:number = Date.now();
-  startTime:number = 0;
-  timeOver:boolean = false;
-  isDataSend:boolean = false;
+  currentTime:number = Date.now()
+  startTime:number = 0
+  timeOver:boolean = false
+  isLoading:boolean = false
   uuid:string = ''
   palSecretKey = ''
 
@@ -32,8 +32,9 @@ export class UserAddPalComponent implements OnInit {
     setTimeout(() => {
       if (this.startTime >= 180_000) {
         this.timeOver = true
+        return
       }
-      this.startTime = Date.now() - this.currentTime;
+      this.startTime = Date.now() - this.currentTime
       this.timer()
     }, 500)
   }
@@ -46,16 +47,16 @@ export class UserAddPalComponent implements OnInit {
   }
 
   addPal() {
-    this.isDataSend = true
+    this.isLoading = true
     setTimeout(() => {
-      this.userService.addPal(this.isDataSend, this.palSecretKey, this.uuid)
-      this.isDataSend = false
+      this.userService.addPal(this.isLoading, this.palSecretKey, this.uuid)
+      this.isLoading = false
       this.refreshSecretKey()
     }, 2000)
   }
 
   cancel() {
-    this.isDataSend = false
+    this.palSecretKey = ''
   }
 
 }

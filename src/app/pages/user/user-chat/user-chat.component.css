@@ -10,7 +10,7 @@
   border-radius: 10px;
 }
 
-.block-new-message {
+.block-nav--new-message {
   display: flex;
   flex-direction: row;
 }

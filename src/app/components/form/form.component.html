@@ -8,14 +8,11 @@
     [inputType]="item.type"
     ngDefaultControl
   ></app-input>
-  <div class="button-wrapper">
-    <app-button
-      *ngFor="let item of formService.buttonsData[name]"
-      [form]="form"
-      [buttonType]="item.buttonType"
-      [imgClass]="item.imgClass"
-      [imgNameSrc]="item.imgSrc"
-      [link]="item.link"
-    ></app-button>
-  </div>
+  <app-two-buttons
+    class="button-wrapper"
+    [form]="form"
+    [buttonTypes]="formService.buttonsData[name].types"
+    [imgNamesSrc]="formService.buttonsData[name].imgNamesSrc"
+    [links]="formService.buttonsData[name].links"
+  ></app-two-buttons>
 </form>

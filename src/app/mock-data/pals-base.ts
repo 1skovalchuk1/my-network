@@ -2,7 +2,7 @@ import { IPalsBase } from "../interfaces/pals";
 
 export const PALS: IPalsBase = {
   '1': {
-    id: '1',
+    palId: '1',
     isOnline: false,
     userPic: 'bull',
     userName: 'Tom',
@@ -18,7 +18,7 @@ export const PALS: IPalsBase = {
     ],
   },
   '2': {
-    id: '2',
+    palId: '2',
     isOnline: false,
     userPic: 'horse',
     userName: 'Lucas',
@@ -35,7 +35,7 @@ export const PALS: IPalsBase = {
     ],
   },
   '3': {
-    id: '3',
+    palId: '3',
     isOnline: false,
     userPic: 'deer',
     userName: 'Jimmy',
@@ -52,7 +52,7 @@ export const PALS: IPalsBase = {
     ],
   },
   '4': {
-    id: '4',
+    palId: '4',
     isOnline: false,
     userPic: 'dolphin',
     userName: 'Mia',
@@ -69,7 +69,7 @@ export const PALS: IPalsBase = {
     ],
   },
   '5': {
-    id: '5',
+    palId: '5',
     isOnline: false,
     userPic: 'cat',
     userName: 'Sophia',

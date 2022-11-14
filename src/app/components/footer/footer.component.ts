@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  footerLinks:Array<string> = ['Info','Support', 'Privacy Policy']
+  footerNav:Array<string> = ['Info','Support', 'Privacy Policy']
   iconsData:Array<{name: string, path: string}> = [
     {name: 'facebook', path: 'https://facebook.com'},
     {name: 'twitter',  path: 'https://twitter.com'},

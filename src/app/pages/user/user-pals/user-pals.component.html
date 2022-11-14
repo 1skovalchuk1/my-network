@@ -8,11 +8,11 @@
     ></app-input>
   </div>
   <div class="pals">
-    <div *ngFor="let pal of (pals | filter: searchPal: 'userName')"
+    <div *ngFor="let data of (palsData | filter: searchPal: 'userName')"
           class="pal">
-      <a [routerLink]="['/user/pals/pal', pal.id]">
-        <app-img [imgNameSrc]="pal.userPic" [isUserPic]="true"></app-img>
-        <app-p>{{pal.userName}}</app-p>
+      <a [routerLink]="['/user/pals/pal', data.palId]">
+        <app-img [imgNameSrc]="data.userPic" [isUserPic]="true"></app-img>
+        <app-p>{{data.userName}}</app-p>
       </a>
     </div>
   </div>

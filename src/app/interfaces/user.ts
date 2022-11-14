@@ -16,8 +16,11 @@ export type TUserPic =
   'rhinoceros' |
   'squirrel'
 
-export type TPalsId = Array<string>
-export type TChatsId = Array<string>
+export type IPalsData = {
+  palId: string,
+  palChatId: string
+}
+export type TPalsData = Array<IPalsData>
 export type TInfo = Array<{title:string, value:string}>
 
 export interface IUser {
@@ -28,8 +31,7 @@ export interface IUser {
   userPic: TUserPic,
   userName: string,
   userInfo: TInfo,
-  pals: TPalsId,
-  chats: TChatsId,
+  palsData: TPalsData,
 }
 
 export interface IUsersBase {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HintService } from 'src/app/components/hint/services/hint.service';
+import { HintService } from 'src/app/hint/services/hint.service';
 import { UserService } from '../../user/services/user.service';
 
 @Injectable({
