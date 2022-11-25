@@ -1,21 +1,5 @@
 import { Injectable } from '@angular/core';
-
-interface InputData {
-  [type: string]: Array<{
-    id: string,
-    type: string,
-    formControlName: string,
-    placeholder: string,
-  }>
-}
-
-interface ButtonData {
-  [type: string]: {
-    imgNamesSrc: Array<string>,
-    types: Array<string>,
-    links: Array<string | Array<string>>,
-  }
-}
+import { ButtonData, InputData } from 'src/app/interfaces';
 
 @Injectable({
   providedIn: 'root'

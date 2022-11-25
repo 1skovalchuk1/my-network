@@ -1,12 +1,52 @@
-<div *ngIf="message"
-  class="flex-my-message"
-  [ngClass]="{
-              'read-message flex-other-message': !message.isCurrentUser,
-              'unread-message': !message.isCurrentUser && !message.isRead
-             }">
-  <div class="my-message">
-    <app-p [pClass]="message.isCurrentUser ? 'message--currentName' : 'message--otherName'">{{message.userName}}</app-p>
-    <app-p [pClass]="message.isCurrentUser ? 'message--currentText' : 'message--otherText'">{{message.text}}</app-p>
+<ng-container *ngIf="message">
+  <div
+    *ngIf="message.isCurrentUser"
+    class="flex-my-message">
+    <div class="my-message">
+      <div class="message-head-flex">
+        <app-button
+          [imgClass]="isMessageToolsOpen ? 'message--tools-close message--tools-open' : 'message--tools-close'"
+          imgNameSrc="message-tools"
+          (click)="messageToolsToggle()"
+        ></app-button>
+        <ng-container *ngIf="isMessageToolsOpen && !isEditMessage">
+          <app-two-buttons
+            [imgNamesSrc]="['trash','edit-message']"
+            imgClass="message--tools"
+            (fnFirstButton)="_fnRemoveMessage()"
+            (fnSecondButton)="editMessage()"
+          ></app-two-buttons>
+        </ng-container>
+        <ng-container *ngIf="isMessageToolsOpen && isEditMessage">
+          <app-two-buttons
+            [imgNamesSrc]="['cancel','ok']"
+            imgClass="message--tools"
+            (fnFirstButton)="editCancelMessage()"
+            (fnSecondButton)="_fnEditOkMessage()"
+          ></app-two-buttons>
+        </ng-container>
+        <app-p pClass="message--currentName">{{message.userName}}</app-p>
+      </div>
+      <app-p *ngIf="!isEditMessage" pClass="message--currentText">{{message.text}}</app-p>
+      <app-textarea
+        *ngIf="isEditMessage"
+        [(ngModel)]="newEditText"
+        textareaClass="message--currentText"
+        ngDefaultControl
+      ></app-textarea>
+      <app-p pClass="message--currentTime">{{message.dispatchTime}}</app-p>
+    </div>
+    <app-img imgClass="message--my-userPic" [imgNameSrc]="message.userPic" [isUserPic]="true"></app-img>
   </div>
-  <app-img imgClass="message--userPic" [imgNameSrc]="message.userPic" [isUserPic]="true"></app-img>
-</div>
+  <div
+    *ngIf="!message.isCurrentUser"
+    class="flex-other-message"
+    [ngClass]="message.isRead ? 'read-message' : 'unread-message'">
+    <app-img imgClass="message--other-userPic" [imgNameSrc]="message.userPic" [isUserPic]="true"></app-img>
+    <div class="other-message">
+      <app-p pClass="message--otherName">{{message.userName}}</app-p>
+      <app-p pClass="message--otherText">{{message.text}}</app-p>
+      <app-p pClass="message--otherTime">{{message.dispatchTime}}</app-p>
+    </div>
+  </div>
+</ng-container>

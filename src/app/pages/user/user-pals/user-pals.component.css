@@ -2,14 +2,19 @@
   text-align: center;
 }
 
+app-img {
+  display: block;
+}
+
 .pal {
   overflow-wrap: break-word;
   text-align: center;
   cursor: pointer;
+  box-shadow: 0 0 3px 0 var(--gray);
   margin: 20px 40px;
   width: 300px;
   height: 130px;
-  border-radius: 50px;
+  border-radius: 15px;
   transition-property:box-shadow;
   transition-duration: 0.2s;
 }
@@ -22,7 +27,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  overflow-y: scroll;
-  height: calc(100vh - 98px);
+  overflow-y: overlay;
+  height: calc(100vh - 101px);
   width: calc(100vw - 100px);
 }

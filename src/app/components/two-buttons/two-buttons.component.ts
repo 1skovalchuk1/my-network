@@ -8,6 +8,7 @@ import { FormGroup } from '@angular/forms';
     (click)="_fnFirstButton()"
     [buttonType]="buttonTypes[0]"
     [imgNameSrc]="imgNamesSrc[0]"
+    [imgClass]="imgClass"
     [link]="links?.[0]"
   ></app-button>
   <ng-content></ng-content>
@@ -15,6 +16,7 @@ import { FormGroup } from '@angular/forms';
     (click)="_fnSecondButton()"
     [buttonType]="buttonTypes[1]"
     [imgNameSrc]="imgNamesSrc[1]"
+    [imgClass]="imgClass"
     [link]="links?.[1]"
     [form]="form"
   ></app-button>
@@ -27,6 +29,7 @@ export class TwoButtonsComponent {
 
   @Input() buttonTypes: Array<string> = ['button', 'button']
   @Input() imgNamesSrc: Array<string> = []
+  @Input() imgClass: string = 'img-button'
   @Input() form?:FormGroup;
   @Input() links?:Array<Array<string> | string>;
 

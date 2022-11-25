@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser, TUserPic } from 'src/app/interfaces/user';
-import { UserService } from '../services/user.service';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { IUser, TUserPic } from 'src/app/interfaces';
+import { UserService } from '../services/user.service';
+
 
 @Component({
   selector: 'app-user-settings',

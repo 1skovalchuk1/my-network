@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IParsePalData } from 'src/app/interfaces/pals';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { UserService } from '../../services/user.service';
 export class UserChatsComponent implements OnInit {
 
   searchChat: string = ''
-  palsData: Array<IParsePalData> | null = null
+  palsData: Array<any> | null = null
 
   constructor(private userService: UserService) {}
 

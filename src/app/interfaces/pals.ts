@@ -1,7 +1,8 @@
-import { IMessage } from './chats'
-import {TInfo, TUserPic} from './user'
+import { IMessage } from './'
+import { TUserPic } from './'
 
 export interface IParsePalData {
+  palsDataId: number,
   palId: string,
   isOnline: boolean,
   userPic: TUserPic,
@@ -14,7 +15,7 @@ export interface IPal {
   isOnline: boolean,
   userPic: TUserPic,
   userName: string,
-  userInfo: TInfo
+  userInfo: Array<{title:string, value:string}>,
 }
 
 export interface IPalsBase {

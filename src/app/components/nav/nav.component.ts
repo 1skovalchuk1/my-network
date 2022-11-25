@@ -1,12 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { IAppNav } from 'src/app/interfaces';
 
-export interface IAppNav {
-  imgClass: string,
-  imgSrc: string,
-  pagelink: string | Array<string>,
-  linkActiveClass: string,
-  isNewMessage?: boolean
-}
+
 
 @Component({
   selector: 'app-nav',

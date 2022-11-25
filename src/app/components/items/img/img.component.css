@@ -1,33 +1,56 @@
+img {
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.message--tools,
+.message--tools-close {
+  height: 25px;
+  width: 25px;
+  object-position: -25px 0;
+}
+
+.user-settings--trash {
+  height: 30px;
+  width: 30px;
+  object-position: -30px 0;
+}
+
 .img-button,
 .nav--img-logout,
 .nav--img {
   height: 50px;
   width: 50px;
-  object-fit: cover;
   object-position: -50px 0;
-  cursor: pointer;
+}
+
+.user-pal--send-message {
+  height: 100px;
+  width: 100px;
+  object-position: -100px 0;
 }
 
 .img-button:hover,
 .img-button-hover,
 .nav--img-logout:hover,
-.nav--img-active,
 .user-settings--trash:hover,
-.user-pal--send-message:hover {
+.user-pal--send-message:hover,
+.message--tools:hover,
+.user-add-pal--refresh:hover,
+.nav--img-active,
+.message--tools-open {
   object-position: 0;
 }
 
 /* ********************************* */
 
 .user-add-pal--refresh {
-  object-position: 0;
   height: 25px;
   width: 25px;
   transition: transform 1s;
 }
 
 .user-add-pal--refresh:hover {
-  object-position: 0;
   transform: rotate(360deg);
 }
 
@@ -56,43 +79,24 @@
 
 /* ********************************* */
 
-.user-pal--userpic {
-  width: 200px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.user-pal--send-message {
-  object-position: -100px 0%;
-  object-fit: cover;
-  cursor: pointer;
-  width: 100px;
-  height: 100px;
-}
-
-/* ********************************* */
-
 .user-chats--userpic {
   width: 50px;
 }
 
-.user-settings--trash {
-  object-position: -30px 0;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-}
-
 .user-home--userpic,
 .user-settings--userpic {
+  cursor: auto;
   width: 200px;
 }
 
 /* ********************************* */
 
-.message--userPic {
+.message--other-userPic,
+.message--my-userPic {
   width: 60px;
+}
+
+.message--my-userPic {
   transform: scaleX(-1);
 }
 

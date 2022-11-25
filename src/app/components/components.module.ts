@@ -6,7 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ButtonComponent } from './items/button/button.component';
 import { HintComponent } from '../hint/hint.component';
 import { NavComponent } from './nav/nav.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { MessageComponent } from './message/message.component';
 import { InputComponent } from './items/input/input.component';
@@ -38,6 +38,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
     FooterComponent,

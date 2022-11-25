@@ -1,4 +1,4 @@
-import { IChatsBase } from "../interfaces/chats";
+import { IChatsBase } from "../interfaces";
 
 export const CHATS: IChatsBase = {
 
@@ -8,37 +8,37 @@ export const CHATS: IChatsBase = {
     messages: [
       {
         userId: '1',
-        userName: 'Tom',
-        userPic: 'bull',
         isRead: false,
+        isEdit: false,
+        dispatchTime: '00:01:01',
         text: 'Hello from Tom 1',
       },
       {
         userId: '2',
-        userName: 'Lucas',
-        userPic: 'horse',
         isRead: false,
+        isEdit: false,
+        dispatchTime: '00:01:02',
         text: 'Hello from Lucas 2',
       },
       {
         userId: '2',
-        userName: 'Lucas',
-        userPic: 'horse',
         isRead: false,
+        isEdit: false,
+        dispatchTime: '00:01:03',
         text: 'Hello from Lucas 3',
       },
       {
         userId: '2',
-        userName: 'Lucas',
-        userPic: 'horse',
         isRead: false,
+        isEdit: false,
+        dispatchTime: '00:01:04',
         text: 'Hello from Lucas 4',
       },
       {
         userId: '1',
-        userPic: 'bull',
-        userName: 'Tom',
         isRead: false,
+        isEdit: true,
+        dispatchTime: '00:01:05',
         text: 'Hello from Tom 5',
       },
     ],
@@ -49,23 +49,23 @@ export const CHATS: IChatsBase = {
     messages: [
       {
         userId: '1',
-        userPic: 'bull',
-        userName: 'Tom',
         isRead: false,
+        isEdit: false,
+        dispatchTime: '00:01:01',
         text: 'Hello from Tom 1',
       },
       {
         userId: '1',
-        userPic: 'bull',
-        userName: 'Tom',
         isRead: false,
+        isEdit: false,
+        dispatchTime: '00:01:02',
         text: 'Hello from Tom 2',
       },
       {
         userId: '4',
-        userPic: 'dolphin',
-        userName: 'Mia',
         isRead: false,
+        isEdit: false,
+        dispatchTime: '00:01:03',
         text: 'Hello from Mia 3',
       },
     ],
@@ -76,23 +76,23 @@ export const CHATS: IChatsBase = {
     messages: [
       {
         userId: '5',
-        userPic: 'cat',
-        userName: 'Sophia',
         isRead: false,
+        isEdit: false,
+        dispatchTime: '00:01:01',
         text: 'Hello from Sophia 1',
       },
       {
         userId: '5',
-        userPic: 'cat',
-        userName: 'Sophia',
         isRead: false,
+        isEdit: false,
+        dispatchTime: '00:01:02',
         text: 'Hello from Sophia 2',
       },
       {
         userId: '2',
-        userName: 'Lucas',
-        userPic: 'horse',
         isRead: false,
+        isEdit: false,
+        dispatchTime: '00:01:03',
         text: 'Hello from Lucas 3',
       },
     ]

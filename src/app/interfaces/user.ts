@@ -16,25 +16,17 @@ export type TUserPic =
   'rhinoceros' |
   'squirrel'
 
-export type IPalsData = {
-  palId: string,
-  palChatId: string
-}
-export type TPalsData = Array<IPalsData>
-export type TInfo = Array<{title:string, value:string}>
 
 export interface IUser {
   id: string,
-  email: string,
-  password: string,
   isOnline: boolean,
   userPic: TUserPic,
   userName: string,
-  userInfo: TInfo,
-  palsData: TPalsData,
+  userInfo: Array<{title:string, value:string}>,
+  palsChatRelationId: Array<string>,
 }
 
 export interface IUsersBase {
-  [email:string]: IUser
+  [id:string]: IUser
 }
 

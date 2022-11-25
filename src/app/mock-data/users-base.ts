@@ -1,10 +1,8 @@
-import { IUsersBase } from "../interfaces/user";
+import { IUsersBase } from "../interfaces";
 
 export const USERS:IUsersBase = {
-  'tom@test.com': {
+  '1': {
       id: '1',
-      email: 'tom@test.com',
-      password: '111111111',
       isOnline: false,
       userPic: 'bull',
       userName: 'Tom',
@@ -18,22 +16,12 @@ export const USERS:IUsersBase = {
           value: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe libero alias quidem repudiandae? Maxime, blanditiis dolores exercitationem voluptate dolorum sint facilis hic, earum in quaerat voluptates saepe? Sequi, incidunt enim.'
         },
       ],
-      palsData: [
-        {
-          palId: '2',
-          palChatId: '1'
-        },
-        {
-          palId: '4',
-          palChatId: '2'
-        },
-      ]
+      palsChatRelationId: ['1','2']
+
   },
-  'lucas@test.com': {
+  '2': {
       id: '2',
-      email: 'lucas@test.com',
-      password: '111111111',
-      isOnline: false,
+      isOnline: true,
       userPic: 'horse',
       userName: 'Lucas',
       userInfo: [
@@ -47,21 +35,10 @@ export const USERS:IUsersBase = {
         },
 
       ],
-      palsData: [
-        {
-          palId: '1',
-          palChatId: '1'
-        },
-        {
-          palId: '5',
-          palChatId: '3'
-        },
-      ]
+      palsChatRelationId: ['1','3']
   },
-  'jimmy@test.com': {
+  '3': {
       id: '3',
-      email: 'jimmy@test.com',
-      password: '111111111',
       isOnline: false,
       userPic: 'deer',
       userName: 'Jimmy',
@@ -76,12 +53,10 @@ export const USERS:IUsersBase = {
         },
 
       ],
-      palsData: []
+      palsChatRelationId: []
   },
-  'mia@test.com': {
+  '4': {
       id: '4',
-      email: 'mia@test.com',
-      password: '111111111',
       isOnline: false,
       userPic: 'dolphin',
       userName: 'Mia',
@@ -96,21 +71,10 @@ export const USERS:IUsersBase = {
         },
 
       ],
-      palsData: [
-        {
-          palId: '1',
-          palChatId: '2'
-        },
-        {
-          palId: '5',
-          palChatId: '4'
-        },
-      ]
+      palsChatRelationId: ['2','4']
   },
-  'sophia@test.com': {
+  '5': {
       id: '5',
-      email: 'sophia@test.com',
-      password: '111111111',
       isOnline: false,
       userPic: 'cat',
       userName: 'Sophia',
@@ -125,15 +89,6 @@ export const USERS:IUsersBase = {
         },
 
       ],
-      palsData: [
-        {
-          palId: '2',
-          palChatId: '3'
-        },
-        {
-          palId: '4',
-          palChatId: '4'
-        },
-      ]
+      palsChatRelationId: ['3','4']
   },
 }

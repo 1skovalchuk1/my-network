@@ -18,7 +18,7 @@ app-img {
 }
 
 .nav--new-message::after {
-  width: 40px;
+  width: 25px;
   height: 20px;
   background-image: url('/assets/icons/unread-message.svg');
   content: '';

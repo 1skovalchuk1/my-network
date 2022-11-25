@@ -20,17 +20,18 @@ export class AuthService {
       Validators.required,
       Validators.minLength(8),
     ]),
-  }, {validators: [this.hintService.isAccountNotRegistered]})
+  }, {validators: [this.hintService.isAccountNotRegistered,
+                   this.hintService.isUserOnline]})
 
   constructor(private hintService: HintService,
               private userService: UserService) {}
 
   login() {
-    this.userService.login(this.authForm)
-  }
-
-  authenticate({ email, password }: { email: string, password: string}) {
-    return this.userService.authenticate({ email, password })
+    const {email, password} = this.authForm.value
+    if (email && password && this.userService.authenticate({email, password})) {
+      this.userService.login(this.authForm)
+    }
+    
   }
 
 }

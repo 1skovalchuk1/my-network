@@ -4,6 +4,8 @@
       *ngFor="let message of messages let i = index"
       (mouseenter)="readMessage(i, message)"
       [message]="message"
+      (fnRemoveMessage)="removeMessage(i)"
+      (fnEditOkMessage)="editMessage($event,i)"
     ></app-message>
   </div>
 </div>
@@ -17,7 +19,7 @@
   ></app-textarea>
   <app-button
     imgNameSrc="send-message"
-    [imgClass]="isMessageSend ? 'img-button-hover' : ''"
+    [imgClass]="isMessageSend ? 'img-button img-button-hover' : 'img-button'"
     (click)="sendMessage()"
   ></app-button>
 </div>

@@ -10,7 +10,7 @@ import { FormGroup } from '@angular/forms';
       <app-img
         [routerLink]="link ? link : null"
         [imgNameSrc]="imgNameSrc"
-        [imgClass]="'img-button ' + imgClass"></app-img>
+        [imgClass]="imgClass"></app-img>
     </button>
   `,
   styleUrls: ['./button.component.css'],
@@ -18,7 +18,7 @@ import { FormGroup } from '@angular/forms';
 export class ButtonComponent implements OnInit {
 
   @Input() link?:Array<string> | string;
-  @Input() imgClass:string = ''
+  @Input() imgClass:string = 'img-button'
   @Input() btnClass:string = 'button'
   @Input() buttonType:string = 'button'
   @Input() imgNameSrc:string = ''

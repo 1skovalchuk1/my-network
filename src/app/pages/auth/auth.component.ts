@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { AuthService } from './services/auth.service'
 import { HintService } from 'src/app/hint/services/hint.service';
 
@@ -16,6 +15,15 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     localStorage.clear()
     this.authService.authForm.reset()
+    this.hintService.clearHint()
+  }
+
+  login() {
+    this.authService.login()
+  }
+
+  getHint() {
+    this.hintService.setFormHintMessage(this.authService.authForm)
   }
 
 }

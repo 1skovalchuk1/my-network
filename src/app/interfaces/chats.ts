@@ -1,29 +1,28 @@
-import { TUserPic } from "./user"
-
-type TChat = Array<IMessage>
-type TPalsId = Array<string>
+import { TUserPic } from "./"
 
 export interface IParseMessage {
   userId: string,
   userName: string,
   userPic: TUserPic,
-  isCurrentUser: boolean
+  isCurrentUser: boolean,
+  dispatchTime: string,
+  isEdit: boolean,
   isRead: boolean,
   text: string,
 }
 
 export interface IMessage {
   userId: string,
-  userPic: TUserPic,
-  userName: string,
   isRead: boolean,
+  isEdit: boolean,
+  dispatchTime: string,
   text: string,
 }
 
 export interface IChat {
   chatId: string,
-  palsId: TPalsId,
-  messages: TChat,
+  palsId: Array<string>,
+  messages: Array<IMessage>,
 }
 
 export interface IChatsBase {

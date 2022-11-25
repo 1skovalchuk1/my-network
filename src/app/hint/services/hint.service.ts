@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { USERS } from 'src/app/mock-data/users-base';
+import { Subject } from 'rxjs';
+import { AUTHENTICATION, USERS } from 'src/app/mock-data';
 
 export type HintControl = [string, Array<[string, string]>]
 export type HintForm = [string, string]
@@ -11,7 +11,7 @@ export type HintForm = [string, string]
 })
 export class HintService {
 
-  email = 'email'
+  hintMessage: Subject<string> = new Subject<string>()
 
   // CONTROLS NAME
   controlUserName        = 'userName'
@@ -28,6 +28,7 @@ export class HintService {
   validatorAccountNotRegistered = 'accountNotRegistered'
   validatorPasswordsMatching    = 'passwordsMatching'
   validatorEmailCreated         = 'emailCreated'
+  validatorIsUserOnline         = 'userOnline'
 
   controlErrorMessagesData: Array<HintControl> = [
     [
@@ -62,6 +63,7 @@ export class HintService {
     [this.validatorAccountNotRegistered, 'account is not registered' ],
     [this.validatorPasswordsMatching,    'passwords do not match' ],
     [this.validatorEmailCreated,         'email already in use' ],
+    [this.validatorIsUserOnline,         'user already login' ],
   ]
 
   constructor() { }
@@ -70,7 +72,7 @@ export class HintService {
 
   isAccountNotRegistered(control: AbstractControl):ValidationErrors | null {
     const email = control.get('email')?.value
-    if (email && !(email in USERS)) {
+    if (email && !(email in AUTHENTICATION)) {
       return {accountNotRegistered: true}
     }
     return null
@@ -87,8 +89,17 @@ export class HintService {
 
   isEmailCreated(control: AbstractControl):ValidationErrors | null {
     const email = control.get('email')?.value
-    if (email && email in USERS) {
+    if (email && email in AUTHENTICATION) {
       return {emailCreated: true}
+    }
+    return null
+  }
+
+  isUserOnline(control: AbstractControl):ValidationErrors | null {
+    const email = control.get('email')?.value
+    const id = AUTHENTICATION[email]?.id
+    if (USERS[id] && USERS[id].isOnline) {
+      return {userOnline: true}
     }
     return null
   }
@@ -113,14 +124,18 @@ export class HintService {
     }
     
     if (this.formErrorMessagesData) {
-      const [, message] = this.formErrorMessagesData.find(([validator, ]) => form.errors?.[validator]) || ['','']
+      const [, message] = this.formErrorMessagesData.find(([validator, ]) => {
+        return form.errors?.[validator]}) || ['','']
       return message
     }
     return ''
   }
 
-  setHintMessage(form: FormGroup) {
-    const message = this.getFormHintMessage(form)
-    // this.store.dispatch(HintActions.setHint({message}))
+  setFormHintMessage(form: FormGroup) {
+    this.hintMessage.next(this.getFormHintMessage(form))
+  }
+
+  clearHint() {
+    this.hintMessage.next('')
   }
 }

@@ -1,6 +1,6 @@
 <app-form
   [form]="registrationService.registrationForm"
-  (fnSubmit)="registrationService.registrate()"
-  (fnInput)="hintService.setHintMessage(registrationService.registrationForm)"
+  (fnSubmit)="registrate()"
+  (fnInput)="getHint()"
   [name]="'registration'"
 ></app-form>

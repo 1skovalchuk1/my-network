@@ -42,11 +42,15 @@
 .user-pal--info-title {
   margin: 20px 0px 5px 15px;
   font-weight: bold;
+  word-break: break-word;
+  width: 500px;
 }
 
 .user-home--info-value,
 .user-pal--info-value {
   margin-left: 25px;
+  word-break: break-word;
+  width: 500px;
 }
 .user-home--info-name,
 .user-pal--info-name {
@@ -59,6 +63,7 @@
 
 .message--currentText,
 .message--otherText {
+  font-size: 15px;
   white-space: pre-line;
   -webkit-user-drag:     auto;
   -webkit-touch-callout: unset;
@@ -71,14 +76,23 @@
 
 .message--currentName,
 .message--otherName {
+  display: inline-block;
   font-weight: bold;
 }
 
-.message--otherName,
-.message--otherText {
-  transform: scaleX(-1);
-  text-align: start;
+.message--currentName {
+  margin-left: 170px;
 }
 
-/* ************************** */
+.message--currentTime,
+.message--otherTime {
+  font-size: 10px;
+  margin: 10px 15px 0px 0px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.message--otherTime {
+  text-align: right;
+}
 

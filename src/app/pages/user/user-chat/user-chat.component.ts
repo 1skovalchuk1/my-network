@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IParseMessage } from 'src/app/interfaces/chats';
+import { IParseMessage } from 'src/app/interfaces';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserService } from '../services/user.service';
 })
 export class UserChatComponent implements OnInit {
 
-  @ViewChild('chatWindow') chatWindow: ElementRef;
+  @ViewChild('chatWindow') chatWindow: ElementRef
 
   isMessageSend:boolean = false
   message:string = ''
@@ -45,13 +45,23 @@ export class UserChatComponent implements OnInit {
 
   sendMessage() {
     this.userService.sendMessage(this.message, this.chatId)
-          // webSockets
+      // webSockets
     this.messages = this.userService.parseMessages(this.chatId)
 
     this.message = ''
     setTimeout(() => this.isMessageSend = !this.isMessageSend, 300)
     this.isMessageSend = !this.isMessageSend
     this.scrollToBottom()
+  }
+
+  removeMessage(i:number) {
+    this.userService.removeMessage(i, this.chatId)
+    this.messages = this.userService.parseMessages(this.chatId)
+  }
+
+  editMessage(newEditText:string, messageId:number) {
+    this.userService.editMessage(newEditText, messageId, this.chatId)
+    this.messages = this.userService.parseMessages(this.chatId)
   }
 
   sendMessageOrNewLine(e:KeyboardEvent) {

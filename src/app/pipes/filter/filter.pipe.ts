@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IPal } from 'src/app/interfaces/pals';
 
 @Pipe({
   name: 'filter'

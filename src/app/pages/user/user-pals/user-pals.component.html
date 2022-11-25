@@ -10,7 +10,7 @@
   <div class="pals">
     <div *ngFor="let data of (palsData | filter: searchPal: 'userName')"
           class="pal">
-      <a [routerLink]="['/user/pals/pal', data.palId]">
+      <a [routerLink]="['/user/pals/pal', data.relId]">
         <app-img [imgNameSrc]="data.userPic" [isUserPic]="true"></app-img>
         <app-p>{{data.userName}}</app-p>
       </a>

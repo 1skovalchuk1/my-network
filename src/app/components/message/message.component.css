@@ -1,15 +1,16 @@
-.flex-my-message {
+.flex-my-message,
+.flex-other-message {
   display: flex;
   align-items: flex-end;
   text-align: end;
 }
 
 .flex-other-message {
-  transform: scaleX(-1);
-  margin-left: -20px;
+  text-align: start;
 }
 
-.my-message {
+.my-message,
+.other-message {
   position: relative;
   width: 300px;
   margin: 20px 10px 0 0;
@@ -17,8 +18,12 @@
   box-shadow: 0 0 0 1px;
   border-radius: 5px;
   overflow-wrap: break-word;
-  padding: 20px;
+  padding: 10px 10px 3px 10px;
   background-color: #fff59d;
+}
+
+.other-message {
+  margin-left: 10px
 }
 
 .unread-message::after {
@@ -28,7 +33,7 @@
   content: '';
   position: relative;
   top: 0px;
-  left: -93px;
+  right: 300px;
   background-repeat: no-repeat;
 }
 
@@ -37,7 +42,8 @@
   content: '';
 }
 
-.my-message::after {
+.my-message::after,
+.other-message::after {
   width: 10px;
   height: 10px;
   content: ' ';
@@ -48,4 +54,14 @@
   transform: rotate(45deg);
   background-color: #fff59d;;
   box-shadow: 0 0 0 1px;
+}
+
+.other-message::after {
+  left: -5px;
+  clip-path: polygon(-10% -10%, -10% 110%, 110% 110%, 50% 50%)
+}
+
+.message-head-flex {
+  display: flex;
+  justify-content: space-between;
 }

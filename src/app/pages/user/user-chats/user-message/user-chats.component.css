@@ -1,8 +1,8 @@
 .pal {
   display: flex;
   align-items: center;
-  box-shadow: 1px 1px 1px 1px var(--gray);
-  border-radius: 10px;
+  box-shadow: 0 0 3px 0 var(--gray);
+  border-radius: 15px;
 
   cursor: pointer;
   margin: 20px 0;
@@ -21,7 +21,7 @@
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-  overflow-y: scroll;
-  height: calc(100vh - 98px);
+  overflow-y: overlay;
+  height: calc(100vh - 101px);
   width: calc(100vw - 100px);
 }
